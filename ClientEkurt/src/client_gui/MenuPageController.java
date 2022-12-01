@@ -17,7 +17,7 @@ public class MenuPageController {
 	@FXML
 	private Button getSubscribersBtn;
 	@FXML
-	private Button updateSubscribersBtn;
+	private Button exitBtn;
 
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/client_gui/MenuPage.fxml"));
@@ -29,16 +29,17 @@ public class MenuPageController {
 	}
 
 	@FXML
-	void Get(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader();
+	void Get(ActionEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
-		Pane root = loader.load(getClass().getResource("/client_gui/GetSubscriber.fxml").openStream());
-		Scene scene = new Scene(root); // create a scene
 		Stage primaryStage = new Stage();
-		primaryStage.setTitle("Subscribers View Page");
-		primaryStage.setScene(scene);
-		primaryStage.show();
-		primaryStage.setResizable(false);
+		GetSubscriberController getPage = new GetSubscriberController();
+		getPage.start(primaryStage);
+	}
+	
+	@FXML
+	void Exit(ActionEvent event) throws Exception {
+		((Node)event.getSource()).getScene().getWindow().hide();
+		System.exit(0);
 	}
 	
 }

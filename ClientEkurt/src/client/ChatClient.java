@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import common.ChatIF;
-import common.Mission;
+import common.Action;
 import common.Response;
-import common.TransmissionPack;
+import common.Transaction;
 import ocsf.client.*;
 
 /**
@@ -57,8 +57,8 @@ public class ChatClient extends AbstractClient {
 	 */
 	public void handleMessageFromServer(Object msg) {
 		awaitResponse=false;
-		if(msg instanceof TransmissionPack) {
-		TransmissionPack tr = (TransmissionPack) msg;
+		if(msg instanceof Transaction) {
+		Transaction tr = (Transaction) msg;
 		//MissionAnalyzeClient.MissionsAnalyzeClient(tr);
 		
 		clientUI.display(tr.getResponse().toString());

@@ -43,6 +43,7 @@ public class ConnectToServerController  {
 		menuPage.start(primaryStage);
     	
     }
+    
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/client_gui/ConnectToServer.fxml"));
 		Scene scene = new Scene(root);

@@ -6,9 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import client.ClientUI;
-import common.Mission;
+import common.Action;
 import common.Response;
-import common.TransmissionPack;
+import common.Transaction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +34,7 @@ public class UpdateSubscriberController {
 	void UpdateSubscribers(ActionEvent event) {
 		List<String> order = new ArrayList<>();
 		order.addAll(Arrays.asList(lblEditColor.getText(), lblEditDate.getText(), lblEditOrderNumber.getText()));
-		TransmissionPack tp = new TransmissionPack(Mission.EDITORDER, null, order);
+		Transaction tp = new Transaction(Action.EDITORDER, null, order);
 		ClientUI.chat.accept(tp);
 		tp = ClientUI.chat.getObj();
 		if (tp.getResponse() == Response.EDIT_ORDER_FAILD) {

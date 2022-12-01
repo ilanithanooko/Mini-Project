@@ -14,18 +14,18 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
          </children>
       </VBox>
-      <ImageView fitHeight="380.0" fitWidth="276.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="286.0" fitWidth="189.0" layoutX="47.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@EKURT.png" />
          </image>
       </ImageView>
       <VBox alignment="CENTER" layoutX="194.0" prefHeight="200.0" prefWidth="100.0" />
-      <Button fx:id="updateSubscribersBtn" layoutX="64.0" layoutY="318.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: #0E5772;" stylesheets="@../../../ServerEkurt/src/server_gui/ServerScreenDesign.css" text="Update Subscriber" textFill="WHITE">
+      <Button fx:id="exitBtn" layoutX="64.0" layoutY="535.0" mnemonicParsing="false" onAction="#Exit" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: #0E5772;" stylesheets="@../../../ServerEkurt/src/server_gui/ServerScreenDesign.css" text="Exit" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="getSubscribersBtn" layoutX="64.0" layoutY="263.0" mnemonicParsing="false" onAction="#Get" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: #0E5772;" stylesheets="@../../../ServerEkurt/src/server_gui/ServerScreenDesign.css" text="Get Subscribers" textFill="WHITE">
+      <Button fx:id="getSubscribersBtn" layoutX="64.0" layoutY="309.0" mnemonicParsing="false" onAction="#Get" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: #0E5772;" stylesheets="@../../../ServerEkurt/src/server_gui/ServerScreenDesign.css" text="Get Subscribers" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

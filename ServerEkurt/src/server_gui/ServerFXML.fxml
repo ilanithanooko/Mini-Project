@@ -16,7 +16,7 @@
 
 <Pane fx:id="ServerPane" prefHeight="530.0" prefWidth="746.0" style="-fx-background-color: #EEF6FD;" styleClass="backgroundServerMainScreen" stylesheets="@ServerScreenDesign.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server_gui.ServerScreenController">
    <children>
-      <ImageView fitHeight="310.0" fitWidth="400.0" layoutX="373.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="251.0" fitWidth="182.0" layoutX="443.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@EKURT.png" />
          </image>
@@ -61,7 +61,7 @@
                   </GridPane>
                </content>
             </ScrollPane>
-            <Label alignment="CENTER" layoutX="70.0" layoutY="16.0" prefHeight="44.0" prefWidth="193.0" text="CONNECTED USERS" textAlignment="CENTER" textFill="#0e5772">
+            <Label alignment="CENTER" layoutX="83.0" layoutY="14.0" prefHeight="44.0" prefWidth="193.0" text="CONNECTED USERS" textAlignment="CENTER" textFill="#0e5772">
                <font>
                   <Font name="Gisha Bold" size="20.0" />
                </font>

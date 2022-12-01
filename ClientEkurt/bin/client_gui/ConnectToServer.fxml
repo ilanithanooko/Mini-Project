@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -32,7 +33,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Button fx:id="ConfirmDetails1" layoutX="76.0" layoutY="184.0" mnemonicParsing="false" onAction="#ConfirmClick" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #0E5772;" text="Confirm" textFill="WHITE">
+                        <Button fx:id="ConfirmDetails" layoutX="76.0" layoutY="184.0" mnemonicParsing="false" onAction="#ConfirmClick" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #0E5772;" stylesheets="@GetSubscriberScreenDesign.css" text="Connect" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -46,11 +47,15 @@
                   </AnchorPane>
                </children>
             </VBox>
-            <ImageView fitHeight="304.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@EKURT.png" />
-               </image>
-            </ImageView>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="301.0" fitWidth="203.0" layoutX="37.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@EKURT.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
          </children>
       </HBox>
    </children>

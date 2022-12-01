@@ -5,7 +5,7 @@ package client;
 import java.io.IOException;
 
 import common.ChatIF;
-import common.TransmissionPack;
+import common.Transaction;
 
 
 /**
@@ -26,15 +26,15 @@ public class ClientController implements ChatIF
    * The default port to connect on.
    */
    public static int DEFAULT_PORT ;
-   public static TransmissionPack obj;
+   public static Transaction obj;
   //Instance variables **********************************************
   
-  public TransmissionPack getObj() {
+  public Transaction getObj() {
 	return obj;
 }
 
 
-public static void setObj(TransmissionPack obj) {
+public static void setObj(Transaction obj) {
 	ClientController.obj = obj;
 }
 

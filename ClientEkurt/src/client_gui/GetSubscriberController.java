@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import client.ClientUI;
-import common.Mission;
+import common.Action;
 import common.Response;
-import common.TransmissionPack;
+import common.Transaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,6 +38,8 @@ public class GetSubscriberController implements Initializable {
 	@FXML
 	private Button getSubscribersBtn;
 	@FXML
+	private Button updateSubscribersBtn;
+	@FXML
 	private Label statusLbl;
 	@FXML
 	private TableView<Subscriber> table;
@@ -64,6 +66,8 @@ public class GetSubscriberController implements Initializable {
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Ekurt Subscriber");
 		primaryStage.setScene(scene);
+		ActionEvent event = new ActionEvent();
+		this.GetSubscribers(event);
 		primaryStage.show();
 	}
 
@@ -86,26 +90,25 @@ public class GetSubscriberController implements Initializable {
 		MenuPageController menuPage = new MenuPageController();
 		menuPage.start(primaryStage);
 	}
-	
-	void Update(ActionEvent event) throws Exception {
+	@FXML
+	void UpdateSub(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding window
 		Stage primaryStage = new Stage();
 		UpdateSubscriberController updatePage = new UpdateSubscriberController();
 		updatePage.start(primaryStage);
 	}
 
-	
 	@FXML
 	void GetSubscribers(ActionEvent event) {
 
-		TransmissionPack tp = new TransmissionPack(Mission.GETORDERS, null, null);
-		ClientUI.chat.accept(tp);
-		tp = ClientUI.chat.getObj();
+		Transaction t = new Transaction(Action.GET_SUBSCRIBER, null, null);
+		ClientUI.chat.accept(t);
+		t = ClientUI.chat.getObj();
 
-		if (tp.getResponse() == Response.FOUND_ORDERS) {
+		if (t.getResponse() == Response.FOUND_SUBSCRIBERS) {
 			listView.clear();
 			List<String> temp = new ArrayList();
-			temp = (List<String>) tp.getInformation();
+			temp = (List<String>) t.getData();
 			for (int i = 0; i < temp.size(); i++) {
 				list = (temp.get(i).split("\\s+"));
 				listView.add(
@@ -120,6 +123,5 @@ public class GetSubscriberController implements Initializable {
 			statusLbl.setTextFill(Color.RED);
 			statusLbl.setText("Upload Failed");
 		}
-
 	}
 }
