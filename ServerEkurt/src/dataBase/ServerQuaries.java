@@ -62,7 +62,6 @@ public class ServerQuaries {
 						}
 					}
 					list.add(tmpOrder.toString());
-
 				}
 
 				obj.setData(list);

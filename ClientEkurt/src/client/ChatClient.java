@@ -59,7 +59,7 @@ public class ChatClient extends AbstractClient {
 		awaitResponse=false;
 		if(msg instanceof Transaction) {
 		Transaction tr = (Transaction) msg;
-		//MissionAnalyzeClient.MissionsAnalyzeClient(tr);
+		ActionAnalyze.actionAnalyzeClient(tr);
 		
 		clientUI.display(tr.getResponse().toString());
 		}

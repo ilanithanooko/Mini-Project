@@ -39,8 +39,8 @@ public class GetSubscriberController implements Initializable {
 	private Button getSubscribersBtn;
 	@FXML
 	private Button updateSubscribersBtn;
-	@FXML
-	private Label statusLbl;
+	//@FXML
+	//private Label statusLbl;
 	@FXML
 	private TableView<Subscriber> table;
 	@FXML
@@ -66,8 +66,8 @@ public class GetSubscriberController implements Initializable {
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Ekurt Subscriber");
 		primaryStage.setScene(scene);
-		ActionEvent event = new ActionEvent();
-		this.GetSubscribers(event);
+		//ActionEvent event = new ActionEvent();
+		//this.GetSubscribers(event);
 		primaryStage.show();
 	}
 
@@ -93,9 +93,9 @@ public class GetSubscriberController implements Initializable {
 	@FXML
 	void UpdateSub(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding window
-		Stage primaryStage = new Stage();
+		Stage Stage = new Stage();
 		UpdateSubscriberController updatePage = new UpdateSubscriberController();
-		updatePage.start(primaryStage);
+		updatePage.start(Stage);
 	}
 
 	@FXML
@@ -108,20 +108,19 @@ public class GetSubscriberController implements Initializable {
 		if (t.getResponse() == Response.FOUND_SUBSCRIBERS) {
 			listView.clear();
 			List<String> temp = new ArrayList();
+			//Subscriber sub  = 
+			Subscriber sub  = new Subscriber("Roei", "Roei", "Roei", "Alex", "Alex", "Alex","Alex");
+			System.out.println(sub);
 			temp = (List<String>) t.getData();
-			for (int i = 0; i < temp.size(); i++) {
+			//System.out.print(temp);
+			//System.out.print("\n");
+		for (int i = 0; i <temp.size(); i++) {
 				list = (temp.get(i).split("\\s+"));
-				listView.add(
-						new Subscriber(list[0], list[1], list[2], list[3], list[4], list[5], list[6]));
+				//listView.add(new Subscriber(list[0], list[1], list[2], list[3], list[4], list[5],list[6]));
+				//System.out.println(sub);
 			}
+		
 			table.setItems(listView);
-			statusLbl.setTextFill(Color.GREEN);
-			statusLbl.setText("Upload Success");
-		}
-
-		else {
-			statusLbl.setTextFill(Color.RED);
-			statusLbl.setText("Upload Failed");
 		}
 	}
 }

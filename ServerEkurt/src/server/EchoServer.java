@@ -1,7 +1,8 @@
 package server;
 import ocsf.server.AbstractServer;
+import common.Transaction;
 import ocsf.server.ConnectionToClient;
-
+import dataBase.dbController;
 
 public class EchoServer extends AbstractServer {
 	  
@@ -32,6 +33,9 @@ public class EchoServer extends AbstractServer {
 	   * @param client The connection from which the message originated.
 	   */
 	public void handleMessageFromClient(Object msg, ConnectionToClient client) {
+		Transaction action=(Transaction) msg;
+	    
+    	dbController.parsingToData(action);
 		System.out.println("Message received: " + msg + " from " + client);
 		this.sendToAllClients(msg);
 	}

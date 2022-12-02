@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import common.Transaction;
 
 public class dbController {
 	
@@ -15,7 +16,11 @@ public class dbController {
 	public static Connection getConn() {
 		return conn;
 	}
-	
+	 @SuppressWarnings("unchecked")
+	  public static void parsingToData(Transaction obj) {
+		 ActionAnalyze.actionAnalyzeServer(obj, conn);
+		  	
+	  }
 	 public static boolean connectToDB(List<String> data){
 		  try 
 			{
