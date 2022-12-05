@@ -95,8 +95,8 @@ public class GetSubscriberController implements Initializable {
 	void UpdateSub(ActionEvent event) throws Exception {
 		//((Node)event.getSource()).getScene().getWindow().hide(); //hiding window
 		Stage Stage = new Stage();
-		UpdateSubscriberController updatePage = new UpdateSubscriberController();
 		Subscriber sub = table.getSelectionModel().getSelectedItem();
+		UpdateSubscriberController updatePage = new UpdateSubscriberController();
 		updatePage.setChosenIdToUpdate(sub.getSubId());
 		updatePage.start(Stage);
 	}

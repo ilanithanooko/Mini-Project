@@ -32,7 +32,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import logic.Subscriber;
 
-public class UpdateSubscriberController implements Initializable{
+public class UpdateSubscriberController{
 
 	@FXML
 	private Button updateBtn;
@@ -53,6 +53,7 @@ public class UpdateSubscriberController implements Initializable{
 		primaryStage.setTitle("Ekurt Subscriber");
 		primaryStage.setScene(scene);
 		subIdTxt.setText(chosenIdToUpdate);
+		subIdTxt.setDisable(true);
 		System.out.println(chosenIdToUpdate);
 		primaryStage.show();
 		primaryStage.setResizable(false);
@@ -76,12 +77,6 @@ public class UpdateSubscriberController implements Initializable{
 			getPage.start(primaryStage);
 		}
 
-	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		subIdTxt.setText(chosenIdToUpdate);
 	}
 
 	public String getChosenIdToUpdate() {
