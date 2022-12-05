@@ -56,6 +56,8 @@ public class GetSubscriberController implements Initializable {
 	@FXML
 	private TableColumn<Subscriber, String> subCreditColTbl;
 	@FXML
+	private Label warningLbl;
+	@FXML
 	private ObservableList<Subscriber> listView = FXCollections.observableArrayList();
 	private String[] list;
 
@@ -91,9 +93,11 @@ public class GetSubscriberController implements Initializable {
 	}
 	@FXML
 	void UpdateSub(ActionEvent event) throws Exception {
-		((Node)event.getSource()).getScene().getWindow().hide(); //hiding window
+		//((Node)event.getSource()).getScene().getWindow().hide(); //hiding window
 		Stage Stage = new Stage();
 		UpdateSubscriberController updatePage = new UpdateSubscriberController();
+		Subscriber sub = table.getSelectionModel().getSelectedItem();
+		updatePage.setChosenIdToUpdate(sub.getSubId());
 		updatePage.start(Stage);
 	}
 

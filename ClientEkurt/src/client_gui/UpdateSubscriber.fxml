@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="322.0" prefWidth="656.0" style="-fx-background-color: #EEF6FD;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server_gui.ServerScreenController">
+<Pane prefHeight="322.0" prefWidth="656.0" style="-fx-background-color: #EEF6FD;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.UpdateSubscriberController">
    <children>
       <ImageView fitHeight="306.0" fitWidth="174.0" layoutX="456.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -31,7 +31,7 @@
             </Label>
             <TextField fx:id="CreditTxt" layoutX="141.0" layoutY="60.0" prefHeight="30.0" prefWidth="255.0" />
             <TextField fx:id="subNumTxt" layoutX="237.0" layoutY="102.0" prefHeight="30.0" prefWidth="158.0" />
-            <Button fx:id="updateBtn" layoutX="91.0" layoutY="169.0" mnemonicParsing="false" onAction="#Connect" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #0E5772;" text="Update" textFill="WHITE">
+            <Button fx:id="updateBtn" layoutX="91.0" layoutY="169.0" mnemonicParsing="false" onAction="#UpdateSubscribers" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #0E5772;" text="Update" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -41,16 +41,12 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="subIdLbl" layoutX="141.0" layoutY="26.0" prefHeight="27.0" prefWidth="135.0" textFill="#0e5772">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
             <Label fx:id="statusLbl" layoutX="269.0" layoutY="171.0" prefHeight="30.0" prefWidth="113.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
+            <TextField fx:id="subIdTxt" layoutX="142.0" layoutY="23.0" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" layoutX="169.0" layoutY="50.0" prefHeight="34.0" prefWidth="218.0" text="Edit Subscriber" textAlignment="CENTER" textFill="#0e5772">

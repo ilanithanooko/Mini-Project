@@ -32,32 +32,36 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import logic.Subscriber;
 
-public class UpdateSubscriberController {
+public class UpdateSubscriberController implements Initializable{
+
+	@FXML
+	private Button updateBtn;
+	@FXML
+	private TextField CreditTxt;
+	@FXML
+	private TextField subNumTxt;
+	@FXML
+	private TextField subIdTxt = new TextField();
+	@FXML
+	private Label statusLbl;
+	private String chosenIdToUpdate;
 	
-		@FXML
-		private Button updateBtn;
-		@FXML
-	   private TextField CreditTxt;
-	   @FXML
-	   private TextField subNumTxt;
-	  @FXML
-	  private Label subIdLbl;
-	  @FXML
-		private Label statusLbl;
 	
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("/client_gui/UpdateSubscriber.fxml"));
+		Pane root = FXMLLoader.load(getClass().getResource("/client_gui/UpdateSubscriber.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Ekurt Subscriber");
 		primaryStage.setScene(scene);
+		subIdTxt.setText(chosenIdToUpdate);
+		System.out.println(chosenIdToUpdate);
 		primaryStage.show();
 		primaryStage.setResizable(false);
 	}
-	
+
 	@FXML
-	void UpdateSubscribers(ActionEvent event) {
+	void UpdateSubscribers(ActionEvent event) throws Exception {
 		List<String> subscribers = new ArrayList<>();
-		subscribers.addAll(Arrays.asList(subNumTxt.getText(), CreditTxt.getText(),  subIdLbl.getText()));
+		subscribers.addAll(Arrays.asList(subNumTxt.getText(), CreditTxt.getText(), subIdTxt.getText()));
 		Transaction t = new Transaction(Action.UPDATE_SUBSCRIBER, null, subscribers);
 		ClientUI.chat.accept(t);
 		t = ClientUI.chat.getObj();
@@ -66,9 +70,26 @@ public class UpdateSubscriberController {
 			statusLbl.setText("Edit Failed");
 		} else {
 			statusLbl.setTextFill(Color.GREEN);
-			statusLbl.setText("Edit Success");
+			((Node) event.getSource()).getScene().getWindow().hide();
+			Stage primaryStage = new Stage();
+			GetSubscriberController getPage = new GetSubscriberController();
+			getPage.start(primaryStage);
 		}
 
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		subIdTxt.setText(chosenIdToUpdate);
+	}
+
+	public String getChosenIdToUpdate() {
+		return chosenIdToUpdate;
+	}
+
+	public void setChosenIdToUpdate(String chosenIdToUpdate) {
+		this.chosenIdToUpdate = chosenIdToUpdate;
 	}
 
 }

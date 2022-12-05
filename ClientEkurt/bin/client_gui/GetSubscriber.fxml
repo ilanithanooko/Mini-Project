@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -40,4 +41,9 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
+   <Label fx:id="warningLbl" layoutX="30.0" layoutY="530.0" textFill="RED">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+   </Label>
 </AnchorPane>
