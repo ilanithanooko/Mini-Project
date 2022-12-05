@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="ServerPane" prefHeight="322.0" prefWidth="656.0" style="-fx-background-color: #EEF6FD;" styleClass="backgroundServerMainScreen" stylesheets="@ServerScreenDesign.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server_gui.ServerScreenController">
+<Pane prefHeight="322.0" prefWidth="656.0" style="-fx-background-color: #EEF6FD;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server_gui.ServerScreenController">
    <children>
       <ImageView fitHeight="306.0" fitWidth="174.0" layoutX="456.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
          <image>

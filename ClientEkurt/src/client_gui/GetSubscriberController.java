@@ -40,7 +40,7 @@ public class GetSubscriberController implements Initializable {
 	@FXML
 	private Button updateSubscribersBtn;
 	@FXML
-	private final TableView<Subscriber> table = new TableView<Subscriber>();
+	private TableView<Subscriber> table = new TableView<Subscriber>();
 	@FXML
 	private TableColumn<Subscriber, String> subNumColTbl;
 	@FXML
@@ -56,7 +56,7 @@ public class GetSubscriberController implements Initializable {
 	@FXML
 	private TableColumn<Subscriber, String> subCreditColTbl;
 	@FXML
-	private final ObservableList<Subscriber> listView = FXCollections.observableArrayList();
+	private ObservableList<Subscriber> listView = FXCollections.observableArrayList();
 	private String[] list;
 
 	public void start(Stage primaryStage) throws Exception {
@@ -72,14 +72,13 @@ public class GetSubscriberController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		subNumColTbl.setCellValueFactory(new PropertyValueFactory<>("Subscriber Number"));
-		subIdColTbl.setCellValueFactory(new PropertyValueFactory<>("ID"));
-		subNameColTbl.setCellValueFactory(new PropertyValueFactory<>("First Name"));
-		subLastNameColTbl.setCellValueFactory(new PropertyValueFactory<>("Last Name"));
-		subPhoneColTbl.setCellValueFactory(new PropertyValueFactory<>("Phone"));
-		subEmailColTbl.setCellValueFactory(new PropertyValueFactory<>("Email"));
-		subCreditColTbl.setCellValueFactory(new PropertyValueFactory<>("Creditcard"));
-		//table.setItems(listView);
+		subNumColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subNumber"));
+		subIdColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subId"));
+		subNameColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subFirstname"));
+		subLastNameColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subLastname"));
+		subPhoneColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subPhone"));
+		subEmailColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subEmail"));
+		subCreditColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subCreditcard"));
 		
 	}
 
@@ -106,16 +105,15 @@ public class GetSubscriberController implements Initializable {
 		ClientUI.chat.accept(t);
 		t = ClientUI.chat.getObj();
 		table.setEditable(true);
-		List<String> temp = new ArrayList();
+		List<String> temp = (List<String>) t.getData();
 		if (t.getResponse() == Response.FOUND_SUBSCRIBERS) {
 			listView.clear();
-			temp = (List<String>) t.getData();
 			System.out.println(temp);
 		for (int i = 0; i <temp.size(); i++) {
 			list = (temp.get(i).split("\\s+"));
 				listView.add(new Subscriber (list[0],list[1], list[2],list[3],list[4],list[5],list[6]));
 			}
-			table.setItems(listView);
+		table.setItems(listView);
 		}
 	}
 }

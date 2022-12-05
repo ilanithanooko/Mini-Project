@@ -58,10 +58,10 @@ public class UpdateSubscriberController {
 	void UpdateSubscribers(ActionEvent event) {
 		List<String> subscribers = new ArrayList<>();
 		subscribers.addAll(Arrays.asList(subNumTxt.getText(), CreditTxt.getText(),  subIdLbl.getText()));
-		Transaction tp = new Transaction(Action.UPDATE_SUBSCRIBER, null, subscribers);
-		ClientUI.chat.accept(tp);
-		tp = ClientUI.chat.getObj();
-		if (tp.getResponse() == Response.UPDATE_SUBSCRIBERS_FAILD) {
+		Transaction t = new Transaction(Action.UPDATE_SUBSCRIBER, null, subscribers);
+		ClientUI.chat.accept(t);
+		t = ClientUI.chat.getObj();
+		if (t.getResponse() == Response.UPDATE_SUBSCRIBERS_FAILD) {
 			statusLbl.setTextFill(Color.RED);
 			statusLbl.setText("Edit Failed");
 		} else {
