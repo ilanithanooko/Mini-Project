@@ -39,10 +39,8 @@ public class GetSubscriberController implements Initializable {
 	private Button getSubscribersBtn;
 	@FXML
 	private Button updateSubscribersBtn;
-	//@FXML
-	//private Label statusLbl;
 	@FXML
-	private TableView<Subscriber> table;
+	private final TableView<Subscriber> table = new TableView<Subscriber>();
 	@FXML
 	private TableColumn<Subscriber, String> subNumColTbl;
 	@FXML
@@ -57,9 +55,9 @@ public class GetSubscriberController implements Initializable {
 	private TableColumn<Subscriber, String> subEmailColTbl;
 	@FXML
 	private TableColumn<Subscriber, String> subCreditColTbl;
-
-	ObservableList<Subscriber> listView = FXCollections.observableArrayList();
-	String[] list;
+	@FXML
+	private final ObservableList<Subscriber> listView = FXCollections.observableArrayList();
+	private String[] list;
 
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/client_gui/GetSubscriber.fxml"));
@@ -74,13 +72,15 @@ public class GetSubscriberController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		subNumColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subscriberNumber"));
-		subIdColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subscriberID"));
-		subNameColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subscriberName"));
-		subLastNameColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subscriberLastName"));
-		subPhoneColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subscriberPhone"));
-		subEmailColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subscriberEmail"));
-		subCreditColTbl.setCellValueFactory(new PropertyValueFactory<Subscriber, String>("subscriberCreditCard"));
+		subNumColTbl.setCellValueFactory(new PropertyValueFactory<>("Subscriber Number"));
+		subIdColTbl.setCellValueFactory(new PropertyValueFactory<>("ID"));
+		subNameColTbl.setCellValueFactory(new PropertyValueFactory<>("First Name"));
+		subLastNameColTbl.setCellValueFactory(new PropertyValueFactory<>("Last Name"));
+		subPhoneColTbl.setCellValueFactory(new PropertyValueFactory<>("Phone"));
+		subEmailColTbl.setCellValueFactory(new PropertyValueFactory<>("Email"));
+		subCreditColTbl.setCellValueFactory(new PropertyValueFactory<>("Creditcard"));
+		//table.setItems(listView);
+		
 	}
 
 	@FXML
@@ -98,28 +98,23 @@ public class GetSubscriberController implements Initializable {
 		updatePage.start(Stage);
 	}
 
+	@SuppressWarnings("unchecked")
 	@FXML
 	void GetSubscribers(ActionEvent event) {
 
 		Transaction t = new Transaction(Action.GET_SUBSCRIBER, null, null);
 		ClientUI.chat.accept(t);
 		t = ClientUI.chat.getObj();
-
+		table.setEditable(true);
+		List<String> temp = new ArrayList();
 		if (t.getResponse() == Response.FOUND_SUBSCRIBERS) {
 			listView.clear();
-			List<String> temp = new ArrayList();
-			//Subscriber sub  = 
-			Subscriber sub  = new Subscriber("Roei", "Roei", "Roei", "Alex", "Alex", "Alex","Alex");
-			System.out.println(sub);
 			temp = (List<String>) t.getData();
-			//System.out.print(temp);
-			//System.out.print("\n");
+			System.out.println(temp);
 		for (int i = 0; i <temp.size(); i++) {
-				list = (temp.get(i).split("\\s+"));
-				//listView.add(new Subscriber(list[0], list[1], list[2], list[3], list[4], list[5],list[6]));
-				//System.out.println(sub);
+			list = (temp.get(i).split("\\s+"));
+				listView.add(new Subscriber (list[0],list[1], list[2],list[3],list[4],list[5],list[6]));
 			}
-		
 			table.setItems(listView);
 		}
 	}

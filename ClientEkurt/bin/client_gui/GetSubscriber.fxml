@@ -22,13 +22,13 @@
       </Button>
       <TableView fx:id="table" layoutX="261.0" layoutY="28.0" prefHeight="459.0" prefWidth="798.0" style="-fx-background-color: #FFE3E2; -fx-background-insets: #FFE3E2;" stylesheets="@GetSubscriberScreenDesign.css">
          <columns>
-            <TableColumn fx:id="subNumColTbl" prefWidth="143.0" text="Subscriber Number " />
+            <TableColumn fx:id="subNumColTbl" prefWidth="143.0" text="Subscriber Number" />
             <TableColumn fx:id="subIdColTbl" prefWidth="67.0" text="ID" />
             <TableColumn fx:id="subNameColTbl" prefWidth="124.0" text="First Name" />
             <TableColumn fx:id="subLastNameColTbl" prefWidth="112.0" text="Last Name" />
-            <TableColumn fx:id="subPhoneColTbl" prefWidth="67.0" text="Phone " />
-            <TableColumn fx:id="subEmailColTbl" prefWidth="127.0" text="Email " />
-            <TableColumn fx:id="subCreditColTbl" prefWidth="157.0" text="Creditcard " />
+            <TableColumn fx:id="subPhoneColTbl" prefWidth="67.0" text="Phone" />
+            <TableColumn fx:id="subEmailColTbl" prefWidth="127.0" text="Email" />
+            <TableColumn fx:id="subCreditColTbl" prefWidth="157.0" text="Creditcard" />
          </columns>
       </TableView>
       <Button fx:id="getSubscribersBtn" layoutX="410.0" layoutY="513.0" mnemonicParsing="false" onAction="#GetSubscribers" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #0E5772;" stylesheets="@GetSubscriberScreenDesign.css" text="Get Subscribers" textFill="WHITE">
