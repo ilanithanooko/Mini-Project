@@ -21,6 +21,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import Utils.generalMethods;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -45,18 +47,12 @@ public class UpdateSubscriberController{
 	@FXML
 	private Label statusLbl;
 	private String chosenIdToUpdate;
-	
+	private generalMethods gm = new generalMethods();
 	
 	public void start(Stage primaryStage) throws Exception {
-		Pane root = FXMLLoader.load(getClass().getResource("/client_gui/UpdateSubscriber.fxml"));
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Ekurt Subscriber");
-		primaryStage.setScene(scene);
+		gm.displayScreen(primaryStage, getClass(), "/client_fxml/UpdateSubscriber.fxml", "Ekrut Update Subscriber");
 		subIdTxt.setText(chosenIdToUpdate);
 		subIdTxt.setDisable(true);
-		System.out.println(chosenIdToUpdate);
-		primaryStage.show();
-		primaryStage.setResizable(false);
 	}
 
 	@FXML
@@ -72,6 +68,7 @@ public class UpdateSubscriberController{
 		} else {
 			statusLbl.setTextFill(Color.GREEN);
 			((Node) event.getSource()).getScene().getWindow().hide();
+
 			Stage primaryStage = new Stage();
 			GetSubscriberController getPage = new GetSubscriberController();
 			getPage.start(primaryStage);

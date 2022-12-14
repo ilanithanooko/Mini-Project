@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Utils.generalMethods;
 import client.ClientUI;
 import common.Action;
 import common.Response;
@@ -60,15 +61,11 @@ public class GetSubscriberController implements Initializable {
 	@FXML
 	private ObservableList<Subscriber> listView = FXCollections.observableArrayList();
 	private String[] list;
+	private int getClicked = 0;
+	private generalMethods gm = new generalMethods();
 
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("/client_gui/GetSubscriber.fxml"));
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Ekurt Subscriber");
-		primaryStage.setScene(scene);
-		//ActionEvent event = new ActionEvent();
-		//this.GetSubscribers(event);
-		primaryStage.show();
+		gm.displayScreen(primaryStage, getClass(), "/client_fxml/GetSubscriber.fxml", "Ekrut Get Subscriber");
 	}
 
 	@Override
@@ -88,23 +85,27 @@ public class GetSubscriberController implements Initializable {
 	void Back(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding window
 		Stage primaryStage = new Stage();
-		MenuPageController menuPage = new MenuPageController();
+		MenuPageManagerController menuPage = new MenuPageManagerController();
 		menuPage.start(primaryStage);
 	}
 	@FXML
 	void UpdateSub(ActionEvent event) throws Exception {
 		//((Node)event.getSource()).getScene().getWindow().hide(); //hiding window
+		if (getClicked==1) {
 		Stage Stage = new Stage();
 		Subscriber sub = table.getSelectionModel().getSelectedItem();
 		UpdateSubscriberController updatePage = new UpdateSubscriberController();
 		updatePage.setChosenIdToUpdate(sub.getSubId());
 		updatePage.start(Stage);
+		} else {
+			warningLbl.setText("Click On Get Please");
+		}
 	}
 
 	@SuppressWarnings("unchecked")
 	@FXML
 	void GetSubscribers(ActionEvent event) {
-
+		getClicked = 1;
 		Transaction t = new Transaction(Action.GET_SUBSCRIBER, null, null);
 		ClientUI.chat.accept(t);
 		t = ClientUI.chat.getObj();

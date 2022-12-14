@@ -2,6 +2,7 @@ package client_gui;
 
 import java.io.IOException;
 
+import Utils.generalMethods;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,20 +13,16 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class MenuPageController {
+public class MenuPageManagerController {
 
 	@FXML
 	private Button getSubscribersBtn;
 	@FXML
 	private Button exitBtn;
+	private generalMethods gm = new generalMethods();
 
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("/client_gui/MenuPage.fxml"));
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Ekurt Menu - Prototype");
-		primaryStage.setScene(scene);
-		primaryStage.show();
-		primaryStage.setResizable(false);
+		gm.displayScreen(primaryStage, getClass(), "/client_fxml/CeoDashboard.fxml", "Ekurt Manager's Menu");
 	}
 
 	@FXML
