@@ -11,11 +11,11 @@ public class ActionAnalyze {
 		
 		switch (obj.getAction()) {
 		case GET_SUBSCRIBER: {
-			ServerQuaries.GetOrderFromDB(obj, con);
+			CEOQuaries.GetOrderFromDB(obj, con);
 			break;
 		}
 		case UPDATE_SUBSCRIBER:{
-			ServerQuaries.UpdateSubscriberOnDB(obj, con);
+			CEOQuaries.UpdateSubscriberOnDB(obj, con);
 			break;
 			}
 		}

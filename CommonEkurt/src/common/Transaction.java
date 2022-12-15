@@ -14,6 +14,12 @@ public class Transaction implements Serializable{
 		this.response = response;
 		this.data = information;
 	}
+	 public Transaction(Action action, Object data) {
+	        this.action = action;
+	        this.response = Response.WAIT_RESPONSE;
+	        this.data = data;
+	        //this.isSendToAll = false; ??????
+	    }
 
 	public Action getAction() {
 		return action;

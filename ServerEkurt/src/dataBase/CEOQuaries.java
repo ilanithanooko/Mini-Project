@@ -11,7 +11,7 @@ import java.util.List;
 import common.Response;
 import common.Transaction;
 
-public class ServerQuaries {
+public class CEOQuaries {
 
 	public static void UpdateSubscriberOnDB(Transaction obj, Connection con) {
 		

@@ -10,11 +10,45 @@ import java.util.List;
 import common.Transaction;
 
 public class dbController {
-	
+	private static dbController databaseController;
 	public static Connection conn;
 	
 	public static Connection getConn() {
 		return conn;
+	}
+	public static dbController getInstance() {
+		if (databaseController == null) {
+			databaseController = new dbController();
+		}
+		return databaseController;
+	}
+
+	/**
+	 * @param query SELECT query
+	 * @return ResultSet
+	 */
+	public ResultSet executeQuery(String query) {
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			return stmt.executeQuery(query);
+		} catch (SQLException e) {e.printStackTrace();}
+		return null;
+	}
+	/**
+	 * @param query  UPDATE/INSERT/DELETE queries
+	 * @return Number of values that has been changed
+	 */
+	public int executeUpdate(String query){
+		PreparedStatement prepareStatement = null;
+
+		try {
+			prepareStatement = conn.prepareStatement(query);
+			return prepareStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return -1;
 	}
 	 @SuppressWarnings("unchecked")
 	  public static void parsingToData(Transaction obj) {
