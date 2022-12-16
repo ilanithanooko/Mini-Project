@@ -1,5 +1,7 @@
 package Utils;
 
+import java.util.List;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,5 +16,14 @@ public class generalMethods {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
+	  /**
+     * Get the first element form the provided list
+     * @param list
+     * @return First element of the list, if not exist return null
+     */
+    public static <T> T getFirstElementFromList(List<T> list) {
+        if (list == null || list.isEmpty())
+            return null;
+        else return list.get(0);
+    }
 }

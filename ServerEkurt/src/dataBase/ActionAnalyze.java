@@ -18,7 +18,11 @@ public class ActionAnalyze {
 			CEOQuaries.UpdateSubscriberOnDB(obj, con);
 			break;
 			}
+	    case LOGIN_USERNAME_PASSWORD:{
+		LoginQuaries.loginByUsernameAndPassword(obj);
+		break;
 		}
+	}
 		
 	}
 }

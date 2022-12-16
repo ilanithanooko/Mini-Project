@@ -2,9 +2,12 @@ package client_gui;
 
 import java.util.HashMap;
 
+import ClientUtil.Utils;
 import client.ClientUI;
 import common.Action;
 import common.Transaction;
+import enums.RoleEnum;
+import logic.User;
 
 /**
  * This class handles the Item methods to be sent and received from the server for the relevant controllers
@@ -28,10 +31,10 @@ public class LoginControllerFunc {
      * This method creates a new message used to update the login status of an account in the GUI and the Current User
      * @param msg The message containing the answer regarding the log in status of the account from the server
      */
-    /*
-    public static void updateLoginStatus(Message msg) {
+    
+    public static void updateLoginStatus(Transaction msg) {
         String loginStatus = "";
-        switch (msg.getAnswer()) {
+        switch (msg.getResponse()) {
             case SUCCEED:
                 loginStatus = "Login successfully";
                 break;
@@ -43,7 +46,7 @@ public class LoginControllerFunc {
                 break;
         }
         RoleEnum currUserRole = null;
-        if (msg.getObject() instanceof User) {
+        if (msg.getData() instanceof User) {
             Utils.currUser = (User) msg.getObject();
             currUserRole = Utils.currUser.getRole();
         }

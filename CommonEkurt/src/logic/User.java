@@ -36,7 +36,7 @@ public class User implements Serializable {
      * @param role
      * @param account
      */
-    public User(int id, String username, String password, boolean isLoggedIn, String firstName, String lastName, String email, String telephone, RoleEnum role, Account account) {
+    public User(int id, String username, String password, boolean isLoggedIn, String firstName, String lastName, String email, String telephone, RoleEnum role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -46,7 +46,6 @@ public class User implements Serializable {
         this.email = email;
         this.telephone = telephone;
         this.role = role;
-        this.account = account;
     }
 
     /**

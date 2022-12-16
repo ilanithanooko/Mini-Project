@@ -26,6 +26,7 @@ import java.util.ResourceBundle;
 
 import Utils.Constants;
 import Utils.generalMethods;
+import enums.RoleEnum;
 /**
  * This class defines User Login screen
  */
@@ -93,18 +94,17 @@ public class LoginController extends Application implements Initializable {
      * @param loginStatusStr Login status of the user
      * @param roleEnum The role of the user connected
      */
-    /*public static void loginStatusUpdated(String loginStatusStr, RoleEnum roleEnum) {
+    public static void loginStatusUpdated(String loginStatusStr, RoleEnum roleEnum) {
         loginStatus.set(loginStatusStr);
         if (loginStatusStr.contains("success")) {
             openSideNavigationByRole(roleEnum);
         }
     }
-*/
     /**
      * Show the relevant side navigation for each role
      * @param roleEnum The user's role
      */
-    /*
+    
     public static void openSideNavigationByRole(RoleEnum roleEnum) {
         switch (roleEnum) {
             case CEO:
@@ -141,7 +141,6 @@ public class LoginController extends Application implements Initializable {
                 break;
         }
     }
-*/
     /**
      * @param location  The location used to resolve relative paths for the root object, or
      *                  {@code null} if the location is not known.
