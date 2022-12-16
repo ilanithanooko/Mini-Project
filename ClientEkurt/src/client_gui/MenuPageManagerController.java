@@ -21,7 +21,7 @@ public class MenuPageManagerController {
 	private Button exitBtn;
 	private generalMethods gm = new generalMethods();
 
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) {
 		gm.displayScreen(primaryStage, getClass(), "/client_fxml/CeoDashboard.fxml", "Ekurt Manager's Menu");
 	}
 

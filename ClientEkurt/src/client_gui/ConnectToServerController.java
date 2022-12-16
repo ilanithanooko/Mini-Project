@@ -39,7 +39,7 @@ public class ConnectToServerController {
 		ClientUI.chat = new ClientController(ip, Integer.parseInt(port));
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding window
 		Stage primaryStage = new Stage();
-		LoginController loginPage = new LoginController();
+		LoginFXController loginPage = new LoginFXController();
 		loginPage.start(primaryStage);
 
 	}

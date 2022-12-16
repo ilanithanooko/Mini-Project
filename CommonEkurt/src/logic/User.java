@@ -1,8 +1,6 @@
 package logic;
 
 import enums.RoleEnum;
-import enums.StatusEnum;
-
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,31 +20,6 @@ public class User implements Serializable {
     private String email;
     private String telephone;
     private RoleEnum role;
-
-    /**
-     * Constructor
-     * @param id
-     * @param username
-     * @param password
-     * @param isLoggedIn
-     * @param firstName
-     * @param lastName
-     * @param email
-     * @param telephone
-     * @param role
-     * @param account
-     */
-    public User(int id, String username, String password, boolean isLoggedIn, String firstName, String lastName, String email, String telephone, RoleEnum role) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.isLoggedIn = isLoggedIn;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.telephone = telephone;
-        this.role = role;
-    }
 
     /**
      * Constructor
@@ -107,13 +80,9 @@ public class User implements Serializable {
     public RoleEnum getRole() {
         return role;
     }
-
-    public Account getAccount() {
-        return account;
-    }
-    public int getAccountId(){ return account.getId();}
-    public double getAccountBalance(){ return account.getBalance();}
-    public StatusEnum getAccountStatus(){ return account.getStatus();}
+   // public int getAccountId(){ return account.getId();}
+   // public double getAccountBalance(){ return account.getBalance();}
+  //public StatusEnum getAccountStatus(){ return account.getStatus();}
 
     public void setPassword(String password) {
         this.password = password;
@@ -142,7 +111,7 @@ public class User implements Serializable {
     public void setRole(RoleEnum role) {
         this.role = role;
     }
-
+    /*
     public void setAccount(Account account) {
         this.account = account;
     }
@@ -150,7 +119,7 @@ public class User implements Serializable {
     public boolean hasAccount() {
         return account != null && getAccountStatus() != StatusEnum.FROZEN;
     }
-
+*/
     /**
      * Creates a new list of User with a given ResultSet
      * @param rs ResultSet
@@ -165,8 +134,8 @@ public class User implements Serializable {
                         rs.getString("username"),
                         rs.getString("password"),
                         rs.getInt("is_logged_in") == 1,
-                        rs.getString("first_name"),
-                        rs.getString("last_name"),
+                        rs.getString("firstname"),
+                        rs.getString("lastname"),
                         rs.getString("email"),
                         rs.getString("telephone"),
                         RoleEnum.valueOf(rs.getString("role"))
