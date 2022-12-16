@@ -31,7 +31,6 @@ import enums.RoleEnum;
  * This class defines User Login screen
  */
 public class LoginController extends Application implements Initializable {
-
     @FXML
     private Button loginButton;
     @FXML
@@ -40,7 +39,7 @@ public class LoginController extends Application implements Initializable {
     private TextField userNameField;
     @FXML
     private Label loginErrorLabel;
-
+    public static Stage primaryStage = new Stage();
     public static String currentUsername;
     public static StringProperty loginStatus = new SimpleStringProperty("");
     private generalMethods gm = new generalMethods();
@@ -56,6 +55,7 @@ public class LoginController extends Application implements Initializable {
     @SuppressWarnings("static-access")
 	@Override
     public void start(Stage primaryStage) throws Exception {
+    	this.primaryStage = primaryStage;
         gm.displayScreen(primaryStage, getClass(),"/client_fxml/LoginPage.fxml","Login Page");
     }
 
@@ -108,8 +108,8 @@ public class LoginController extends Application implements Initializable {
     public static void openSideNavigationByRole(RoleEnum roleEnum) {
         switch (roleEnum) {
             case CEO:
-                SidenavigationCEOFXController sidenavigationCEOFXController = new SidenavigationCEOFXController();
-                Platform.runLater(() -> sidenavigationCEOFXController.start(primaryStage));
+            	MenuPageManagerController CEODashboard = new MenuPageManagerController();
+                Platform.runLater(() -> CEODashboard.start(primaryStage));
                 break;
             case CLIENT:
                 SidenavigationClientFXController sidenavigationClientFXController = new SidenavigationClientFXController();

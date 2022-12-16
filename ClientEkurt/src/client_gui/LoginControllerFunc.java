@@ -2,7 +2,7 @@ package client_gui;
 
 import java.util.HashMap;
 
-import ClientUtil.Utils;
+import clientUtil.Utils;
 import client.ClientUI;
 import common.Action;
 import common.Transaction;
@@ -25,7 +25,7 @@ public class LoginControllerFunc {
         Transaction msg = new Transaction(Action.LOGIN_USERNAME_PASSWORD, args);
         ClientUI.chat.accept(msg);
     }
-}
+
 
     /**
      * This method creates a new message used to update the login status of an account in the GUI and the Current User
@@ -47,14 +47,12 @@ public class LoginControllerFunc {
         }
         RoleEnum currUserRole = null;
         if (msg.getData() instanceof User) {
-            Utils.currUser = (User) msg.getObject();
+            Utils.currUser = (User) msg.getData();
             currUserRole = Utils.currUser.getRole();
         }
-        LoginScreenFXController.loginStatusUpdated(
-                loginStatus,
-                currUserRole
-        );
+        LoginScreenFXController.loginStatusUpdated(loginStatus,currUserRole);
     }
+}
 
     /**
      * Set 'is_logged_in' column in DB to 0
