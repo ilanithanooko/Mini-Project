@@ -7,6 +7,7 @@ import client.ClientUI;
 import common.Action;
 import common.Transaction;
 import enums.RoleEnum;
+import javafx.stage.Stage;
 import logic.User;
 
 /**
@@ -24,6 +25,13 @@ public class LoginController {
         args.put("password", password);
         Transaction msg = new Transaction(Action.LOGIN_USERNAME_PASSWORD, args);
         ClientUI.chat.accept(msg);
+        
+        
+        
+        
+        
+        
+        
     }
 
 
@@ -34,6 +42,7 @@ public class LoginController {
      */
     
     public static void updateLoginStatus(Transaction msg) throws Exception {
+    	/*
         String loginStatus = "";
         switch (msg.getResponse()) {
             case SUCCEED:
@@ -52,6 +61,22 @@ public class LoginController {
             currUserRole = Utils.currUser.getRole();
         }
         LoginFXController.loginStatusUpdated(loginStatus,currUserRole);
+        */
+    	
+        RoleEnum currUserRole = null;
+        if (msg.getData() instanceof User) {
+            Utils.currUser = (User) msg.getData();
+            currUserRole = Utils.currUser.getRole();
+        }
+        switch(currUserRole) {
+        case CEO:
+        	MenuPageManagerController CEODashboard = new MenuPageManagerController();
+        	CEODashboard.start(LoginFXController.primaryStage);
+        break;
+    	
+        }
+    	
+    	
     }
 }
 

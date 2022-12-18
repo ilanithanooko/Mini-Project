@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="1090.0" style="-fx-background-color: #EEF6FD;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.GetSubscriberController">
+      <ImageView fitHeight="255.0" fitWidth="222.0" layoutX="30.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../client_images/EKURT.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="backBtn" layoutX="41.0" layoutY="312.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="163.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   <Label fx:id="warningLbl" layoutX="30.0" layoutY="530.0" textFill="RED">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+   </Label>
+   <AreaChart layoutX="764.0" layoutY="356.0" prefHeight="247.0" prefWidth="305.0">
+     <xAxis>
+       <CategoryAxis side="BOTTOM" />
+     </xAxis>
+     <yAxis>
+       <NumberAxis side="LEFT" />
+     </yAxis>
+   </AreaChart>
+   <Label layoutX="695.0" layoutY="195.0" text="Bamba" />
+   <Label layoutX="820.0" layoutY="439.0" text="Abadi" />
+   <Label layoutX="859.0" layoutY="391.0" text="Coca Cola" />
+   <TableView layoutX="232.0" layoutY="109.0" prefHeight="467.0" prefWidth="535.0" stylesheets="@../client_css/table&amp;buttonDesign.css">
+     <columns>
+       <TableColumn prefWidth="75.0" text="Product ID" />
+         <TableColumn prefWidth="126.0" text="Product Name" />
+         <TableColumn prefWidth="112.0" text="Quantity" />
+         <TableColumn prefWidth="83.0" text="Price" />
+         <TableColumn prefWidth="136.0" text="Picture" />
+     </columns>
+   </TableView>
+   <Label alignment="CENTER" layoutX="255.0" layoutY="26.0" prefHeight="62.0" prefWidth="423.0" text="Inventories Report- Machine ID" textAlignment="CENTER" textFill="#0e5772">
+      <font>
+         <Font name="Calibri Bold" size="30.0" />
+      </font>
+   </Label>
+   <Label layoutX="893.0" layoutY="471.0" text="Doritos" />
+   <Label layoutX="835.0" layoutY="329.0" text="Top 5 Wanted Products" textFill="#0e5772">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label layoutX="969.0" layoutY="488.0" text="Fuze tea" />
+   <Label layoutX="232.0" layoutY="85.0" text="Products" textFill="#0e5772">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <PieChart layoutX="808.0" layoutY="98.0" prefHeight="228.0" prefWidth="243.0" title="Pie Chart - Sales by Category" />
+   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="832.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../client_images/toppng.com-80-pie-chart-orangeblue-1112x713.png" />
+      </image>
+   </ImageView>
+   <Label layoutX="1014.0" layoutY="415.0" text="Bamba" />
+</AnchorPane>
