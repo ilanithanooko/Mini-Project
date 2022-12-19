@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="362.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.MenuPageManagerController">
+<AnchorPane prefHeight="362.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.CeoDashboardController">
    <children>
       <AnchorPane prefHeight="405.0" prefWidth="516.0" style="-fx-background-color: #EEF6FD;">
          <children>
@@ -26,7 +26,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="exitBtn" layoutX="22.0" layoutY="346.0" mnemonicParsing="false" onAction="#Exit" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #0E5772;" stylesheets="@../../../ServerEkurt/src/server_gui/ServerScreenDesign.css" text="Exit" textFill="WHITE">
+            <Button fx:id="LogoutBtn" layoutX="22.0" layoutY="346.0" mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #0E5772;" stylesheets="@../../../ServerEkurt/src/server_gui/ServerScreenDesign.css" text="Logout" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

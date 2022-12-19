@@ -1,7 +1,7 @@
 package client;
 import client_gui.ConnectToServerController;
 import client_gui.GetSubscriberController;
-import client_gui.MenuPageManagerController;
+import client_gui.CeoDashboardController;
 
 import javafx.application.Application;
 import javafx.scene.Node;

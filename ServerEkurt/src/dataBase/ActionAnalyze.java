@@ -19,9 +19,13 @@ public class ActionAnalyze {
 			break;
 			}
 	    case LOGIN_USERNAME_PASSWORD:{
-		LoginQuaries.loginByUsernameAndPassword(obj);
+	    	LoginQuaries.loginByUsernameAndPassword(obj);
 		break;
 		}
+	    case LOGOUT_USER: {
+	    	LoginQuaries.logoutUsername(obj);
+	    break;
+	    }
 	}
 		
 	}

@@ -19,24 +19,24 @@ public class LoginQuaries {
         String password = args.get("password");
 
         ResultSet rs = dbController.getInstance().executeQuery("SELECT * FROM ekurt.users where username='" + username + "' and password='" + password + "'");
-        if (rs == null)
-            msg.setResponse(Response.FAILED);
-        else {
-            if (updateIsLoggedInColumn(username, password, 1)) {
-                User currentUser = generalMethods.getFirstElementFromList(User.createUserListFromResultSet(rs));
-                //currentUser.setAccount(getAccountInfoByUserID(currUser.getId()));
-                //TODO Remove these comments to check if user is already logged in (and acts accordingly)
-                if (currentUser.isLoggedIn()) {
-                    msg.setResponse(Response.ALREADY_LOGGED_IN);
-                } else {
-                    msg.setData(currentUser);
-                    msg.setResponse(Response.SUCCEED);
-                }
-            } else {
-                msg.setResponse(Response.INCORRECT_VALUES);
-            }
-        }
-    }
+		if (rs == null)
+			msg.setResponse(Response.FAILED);
+		else {
+			User currentUser = generalMethods.getFirstElementFromList(User.createUserListFromResultSet(rs));
+			System.out.println("initial Status: " + currentUser.isLoggedIn());
+			if(!currentUser.isLoggedIn()) {
+				updateIsLoggedInColumn(username, password, 1);
+				currentUser.setLoggedIn(true);
+				msg.setData(currentUser);
+				msg.setResponse(Response.LOGGED_IN_SUCCESS);
+			} else if (currentUser.isLoggedIn()) {
+				msg.setResponse(Response.ALREADY_LOGGED_IN);
+				System.out.println("Already:" + currentUser.toString());
+			} else {
+				msg.setResponse(Response.INCORRECT_VALUES);
+			}
+		}
+	}
 
     /**
      * Set 'is_logged_in' column in DB to 0
@@ -46,6 +46,7 @@ public class LoginQuaries {
         HashMap<String, String> args = (HashMap<String, String>) msg.getData();
         String username = args.get("username");
         updateIsLoggedInColumn(username, null, 0);
+        msg.setResponse(Response.LOGGEDOUT_SUCCESSFULLY);
     }
 
     /**
@@ -77,11 +78,15 @@ public class LoginQuaries {
         if (value != 0 && value != 1)
             throw new IllegalArgumentException("'is_logged_in' column can be 0 or 1!");
         String query;
-        if (password == null)
+        if (password == null) {
             query = "UPDATE ekurt.users SET is_logged_in = " + value + " WHERE username = '" + username + "'";
-        else query = "UPDATE ekurt.users SET is_logged_in = " + value + " WHERE username = '" + username + "' AND password = '" + password + "'";
+
+        }else {
+        	query = "UPDATE ekurt.users SET is_logged_in = " + value + " WHERE username = '" + username + "' AND password = '" + password + "'";
+        }
         int affectedRows = dbController.getInstance().executeUpdate(query);
-        return affectedRows == 1;
+        System.out.println("affected rows" + affectedRows);
+        return (affectedRows == 1);
     }
 
     /**

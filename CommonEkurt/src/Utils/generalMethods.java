@@ -1,12 +1,14 @@
 package Utils;
-
 import java.io.IOException;
 import java.util.List;
 
+import common.Transaction;
+import enums.RoleEnum;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import logic.User;
 
 public class generalMethods {
 	

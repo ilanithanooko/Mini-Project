@@ -24,13 +24,15 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import Utils.Constants;
-import Utils.generalMethods;
+import Utils.*;
+import logic.*;
+import common.Transaction;
 import enums.RoleEnum;
+import clientUtil.*;
 /**
  * This class defines User Login screen
  */
-public class LoginFXController extends Application implements Initializable {
+public class LoginFXController extends Application /* implements Initializable */{
     @FXML
     private Button loginButton;
     @FXML
@@ -38,7 +40,8 @@ public class LoginFXController extends Application implements Initializable {
     @FXML
     private TextField userNameField;
     @FXML
-    private Label loginErrorLabel;
+    private Label loginErrorLabel = new Label("Start");
+
     public static Stage primaryStage = new Stage();
     public static String currentUsername;
     public static StringProperty loginStatus = new SimpleStringProperty("");
@@ -68,8 +71,8 @@ public class LoginFXController extends Application implements Initializable {
     void onButtonPressLogin(ActionEvent event) {
         String username = userNameField.getText();
         String password = passwordField.getText();
-        loginErrorLabel.setVisible(username.isEmpty());
-        loginErrorLabel.setVisible(password.isEmpty());
+        //loginErrorLabel.setVisible(username.isEmpty());
+        //loginErrorLabel.setVisible(password.isEmpty());
 
         if (username.isEmpty()) {
             userNameField.setStyle(Constants.TEXT_FIELD_NOT_VALID_STYLE);
@@ -83,11 +86,11 @@ public class LoginFXController extends Application implements Initializable {
            // primaryStage = ((Stage) ((Button) event.getSource()).getScene().getWindow());
             LoginController.loginByUsernameAndPassword(username, password);
         }
-        if (loginErrorLabel.isVisible()) {
-            loginErrorLabel.setVisible(false);
-        }
+       // if (loginErrorLabel.isVisible()) {
+      //      loginErrorLabel.setVisible(false);
+      //  }
     }
-
+    
     /**
      * Update login status of user, and show the relevant side navigation bar that corresponds
      * to the user's role
@@ -95,30 +98,38 @@ public class LoginFXController extends Application implements Initializable {
      * @param roleEnum The role of the user connected
      * @throws Exception 
      */
-    public static void loginStatusUpdated(String loginStatusStr, RoleEnum roleEnum) throws Exception {
-        loginStatus.set(loginStatusStr);
-        if (loginStatusStr.contains("success")) {
-            openSideNavigationByRole(roleEnum);
-        }
+    
+    
+    void openDashboardByRole(String loginStatusStr, RoleEnum roleEnum) throws Exception {
+       // loginStatus.set(loginStatusStr);
+        switch (roleEnum) {
+	        case CEO:
+	        	CeoDashboardController CEODashboard = new CeoDashboardController();
+	            Platform.runLater(() -> {
+						CEODashboard.start(primaryStage);
+				});
+	            break;
+	    }
     }
+    
+    void setLoginErrorLableToAlreadyLoggedIn(String loginStatusStr) throws Exception {
+        loginStatus.set("User already logged-in");
+//        	loginErrorLabel.setText("User already logged-in");
+//            loginErrorLabel.setVisible(true);
+            loginErrorLabel.textProperty().bind(loginStatus);
+
+    }
+    
     /**
      * Show the relevant side navigation for each role
      * @param roleEnum The user's role
      */
     
-    public static void openSideNavigationByRole(RoleEnum roleEnum) throws Exception {
-        switch (roleEnum) {
-            case CEO:
-            	MenuPageManagerController CEODashboard = new MenuPageManagerController();
-                Platform.runLater(() -> {
-					try {
-						CEODashboard.start(primaryStage);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				});
-                break;
-        }
+   // public static void openSideNavigationByRole(RoleEnum roleEnum) throws Exception {
+       
+            
+  //      }
+   // }
                 /*
             case CLIENT:
                 SidenavigationClientFXController sidenavigationClientFXController = new SidenavigationClientFXController();
@@ -148,21 +159,25 @@ public class LoginFXController extends Application implements Initializable {
                 SidenavigationDeliverymanFXController sidenavigationDeliveryManFXController = new SidenavigationDeliverymanFXController();
                 Platform.runLater(() -> sidenavigationDeliveryManFXController.start(primaryStage));
                 break;
-        }*/
-    }
+        }
+    } 
+
     /**
      * @param location  The location used to resolve relative paths for the root object, or
      *                  {@code null} if the location is not known.
      * @param resources The resources used to localize the root object, or {@code null} if
      *                  the root object was not localized.
      */
+    
+   /*
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        loginStatus.addListener((observable, oldValue, newValue) -> {
+        	loginStatus.addListener((observable, oldValue, newValue) -> {
             loginErrorLabel.setText(newValue);
             loginErrorLabel.setTextAlignment(TextAlignment.CENTER);
             loginErrorLabel.setVisible(newValue.contains("incorrect") || newValue.contains("already logged-in"));
         });
     }
+    */
 }
     

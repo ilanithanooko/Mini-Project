@@ -5,6 +5,6 @@ import logic.User;
 /**
  * util class that enables you to perform methods on the current client (user of system) connected to the system
  */
-public class Utils {
+public class ClientUtils {
     public static User currUser;
 }

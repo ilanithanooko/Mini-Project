@@ -12,17 +12,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import clientUtil.ClientUtils;
 
-public class MenuPageManagerController {
+public class CeoDashboardController {
 
 	@FXML
 	private Button getSubscribersBtn;
 	@FXML
-	private Button exitBtn;
-	private generalMethods gm = new generalMethods();
+	private Button LogoutBtn;
+	//private generalMethods gm = new generalMethods();
 
 	public void start(Stage primaryStage) {
-		gm.displayScreen(primaryStage, getClass(), "/client_fxml/CeoDashboard.fxml", "Ekurt Manager's Menu");
+		generalMethods.displayScreen(primaryStage, getClass(), "/client_fxml/CeoDashboard.fxml", "Ekurt Manager's Menu");
 	}
 
 	@FXML
@@ -34,9 +35,14 @@ public class MenuPageManagerController {
 	}
 	
 	@FXML
-	void Exit(ActionEvent event) throws Exception {
-		((Node)event.getSource()).getScene().getWindow().hide();
-		System.exit(0);
+	void logout(ActionEvent event) throws Exception {
+		LoginController.logout(ClientUtils.currUser.getUsername());
+		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
+		Stage primaryStage = new Stage();
+		LoginFXController getPage = new LoginFXController();
+		getPage.start(primaryStage);
+
+		
 	}
 	
 }

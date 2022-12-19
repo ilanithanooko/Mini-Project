@@ -85,7 +85,7 @@ public class GetSubscriberController implements Initializable {
 	void Back(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding window
 		Stage primaryStage = new Stage();
-		MenuPageManagerController menuPage = new MenuPageManagerController();
+		CeoDashboardController menuPage = new CeoDashboardController();
 		menuPage.start(primaryStage);
 	}
 	@FXML
