@@ -114,10 +114,12 @@ public class LoginFXController extends Application /* implements Initializable *
     
     void setLoginErrorLableToAlreadyLoggedIn(String loginStatusStr) throws Exception {
         loginStatus.set("User already logged-in");
+        Platform.runLater(() -> {
 //        	loginErrorLabel.setText("User already logged-in");
 //            loginErrorLabel.setVisible(true);
             loginErrorLabel.textProperty().bind(loginStatus);
 
+		});
     }
     
     /**
