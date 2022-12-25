@@ -26,6 +26,10 @@ public class ActionAnalyze {
 	    	LoginQuaries.logoutUsername(obj);
 	    break;
 	    }
+	    case GET_MACHINES_LIST: {
+	    	CEOQuaries.getMachineList(obj);
+	    break;
+	    }
 	}
 		
 	}

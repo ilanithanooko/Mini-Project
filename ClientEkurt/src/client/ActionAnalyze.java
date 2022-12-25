@@ -1,5 +1,10 @@
 package client;
 
+
+
+import java.util.List;
+
+import client_gui.ChooseMachinePickupController;
 import client_gui.LoginController;
 import client_gui.LoginFXController;
 import common.Transaction;
@@ -40,6 +45,9 @@ public class ActionAnalyze {
 			// insert relevant method from the clientQuaries on the future
 			loginController.updateLoginStatusToIncorrectVals(msg);
 			break;
+		}
+		case FOUND_MACHINE_NAMES: {
+			ChooseMachinePickupController.setMachineNames((List<String>)msg.getData());
 		}
 		}
 		return false;

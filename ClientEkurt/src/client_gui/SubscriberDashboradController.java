@@ -3,6 +3,7 @@ package client_gui;
 import java.io.IOException;
 
 import Utils.generalMethods;
+import client.ClientUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import clientUtil.ClientUtils;
+import common.Action;
+import common.Transaction;
 
 public class SubscriberDashboradController {
 	@FXML
@@ -41,6 +44,8 @@ public class SubscriberDashboradController {
 	void pickUpButton(ActionEvent event) throws Exception {
 		Stage primaryStage = new Stage();
 		ChooseMachinePickupController chooseMachine = new ChooseMachinePickupController();
+		Transaction listGetter = new Transaction(Action.GET_MACHINES_LIST, null);
+        ClientUI.chat.accept(listGetter); 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		chooseMachine.start(primaryStage);
 	}
