@@ -7,5 +7,5 @@ import logic.*;
  */
 public class ClientUtils {
     public static User currUser;
-    public static Order orderInProcess;
+    public static PickUpOrder pickupOrderInProcess;
 }

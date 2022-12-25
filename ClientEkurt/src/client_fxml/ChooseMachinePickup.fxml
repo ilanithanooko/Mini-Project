@@ -23,7 +23,7 @@
                   <Image url="@../client_images/EKURT.png" />
                </image>
             </ImageView>
-            <Button layoutX="182.0" layoutY="299.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Continue" textFill="WHITE">
+            <Button fx:id="continueBtn" layoutX="182.0" layoutY="299.0" mnemonicParsing="false" onAction="#clickOnContinue" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Continue" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

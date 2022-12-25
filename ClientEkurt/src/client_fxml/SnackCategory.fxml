@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -12,11 +13,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="362.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.ConnectToServerController">
+<AnchorPane prefHeight="362.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.SnackCategoryController">
    <children>
       <AnchorPane prefHeight="654.0" prefWidth="932.0" style="-fx-background-color: #EEF6FD;">
          <children>
-            <SplitPane dividerPositions="0.29797979797979796" prefHeight="654.0" prefWidth="933.0">
+            <SplitPane dividerPositions="0.29860365198711064" prefHeight="654.0" prefWidth="933.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: EEF6FD;">
                      <children>
@@ -25,17 +26,20 @@
                               <Image url="@../client_images/EKURT.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="26.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="backBtn" fitHeight="29.0" fitWidth="36.0" layoutX="26.0" layoutY="25.0" onMouseClicked="#clickOnBackButton" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../client_images/BackLogo.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
-                        <Button fx:id="loginBtn12" layoutX="61.0" layoutY="537.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Checkout" textFill="WHITE">
+                        <Button fx:id="checkoutBtn" layoutX="61.0" layoutY="537.0" mnemonicParsing="false" onAction="#clickOnCheckout" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Checkout" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="loginBtn121" layoutX="61.0" layoutY="589.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Cancel" textFill="WHITE">
+                        <Button fx:id="cancelBtn" layoutX="61.0" layoutY="589.0" mnemonicParsing="false" onAction="#clickOnCancel" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Cancel" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
@@ -51,24 +55,24 @@
                      <children>
                         <ScrollPane layoutY="107.0" prefHeight="546.0" prefWidth="651.0" style="-fx-background-color: FFFFFF;">
                            <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="653.0" style="-fx-background-color: EEF6FD;">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="653.0" style="-fx-background-color: EEF6FD;">
                                  <children>
                                     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="52.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../client_images/Bamba.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" layoutX="77.0" layoutY="179.0" prefHeight="19.0" prefWidth="65.0" text="Bamba" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="nameBamba" alignment="CENTER" layoutX="77.0" layoutY="179.0" prefHeight="19.0" prefWidth="65.0" text="Bamba" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER" layoutX="77.0" layoutY="202.0" prefHeight="19.0" prefWidth="65.0" text="₪6.90" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="priceBamba" alignment="CENTER" layoutX="77.0" layoutY="202.0" prefHeight="19.0" prefWidth="65.0" text="6.90" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="134.0" layoutY="227.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
+                                    <Button fx:id="plusBamba" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="134.0" layoutY="227.0" mnemonicParsing="false" onAction="#increaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -76,8 +80,8 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <TextField alignment="CENTER" editable="false" layoutX="91.0" layoutY="228.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="65.0" layoutY="227.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
+                                    <TextField fx:id="bambaAmount" alignment="CENTER" editable="false" layoutX="91.0" layoutY="228.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
+                                    <Button fx:id="minusBamba" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="65.0" layoutY="227.0" mnemonicParsing="false" onAction="#decreaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -85,7 +89,7 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <Button fx:id="loginBtn122" layoutX="77.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
+                                    <Button fx:id="addBamba" layoutX="77.0" layoutY="260.0" mnemonicParsing="false" onAction="#addProductToCart" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -95,17 +99,17 @@
                                           <Image url="@../client_images/Apropo.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" layoutX="367.0" layoutY="179.0" prefHeight="19.0" prefWidth="65.0" text="Apropo" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="nameApropo" alignment="CENTER" layoutX="367.0" layoutY="179.0" prefHeight="19.0" prefWidth="65.0" text="Apropo" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER" layoutX="367.0" layoutY="202.0" prefHeight="19.0" prefWidth="65.0" text="₪6.90" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="priceApropo" alignment="CENTER" layoutX="367.0" layoutY="202.0" prefHeight="19.0" prefWidth="65.0" text="6.90" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="424.0" layoutY="227.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
+                                    <Button fx:id="plusApropo" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="424.0" layoutY="227.0" mnemonicParsing="false" onAction="#increaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -113,8 +117,8 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <TextField alignment="CENTER" editable="false" layoutX="381.0" layoutY="228.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="355.0" layoutY="227.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
+                                    <TextField fx:id="apropoAmount" alignment="CENTER" editable="false" layoutX="381.0" layoutY="228.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
+                                    <Button fx:id="minusApropo" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="355.0" layoutY="227.0" mnemonicParsing="false" onAction="#decreaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -122,7 +126,7 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <Button fx:id="loginBtn1221" layoutX="367.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
+                                    <Button fx:id="addApropo" layoutX="367.0" layoutY="260.0" mnemonicParsing="false" onAction="#addProductToCart" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -132,17 +136,17 @@
                                           <Image url="@../client_images/bamba-bisli.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" layoutX="494.0" layoutY="179.0" prefHeight="23.0" prefWidth="98.0" text="Bamba Mix" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="nameBambaMix" alignment="CENTER" layoutX="494.0" layoutY="179.0" prefHeight="23.0" prefWidth="98.0" text="Bamba Mix" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER" layoutX="511.0" layoutY="202.0" prefHeight="19.0" prefWidth="65.0" text="₪9.90" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="priceBambaMix" alignment="CENTER" layoutX="511.0" layoutY="202.0" prefHeight="19.0" prefWidth="65.0" text="9.90" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="568.0" layoutY="227.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
+                                    <Button fx:id="plusBambaMix" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="568.0" layoutY="227.0" mnemonicParsing="false" onAction="#increaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -150,8 +154,8 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <TextField alignment="CENTER" editable="false" layoutX="525.0" layoutY="228.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="499.0" layoutY="227.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
+                                    <TextField fx:id="bambaMixAmount" alignment="CENTER" editable="false" layoutX="525.0" layoutY="228.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
+                                    <Button fx:id="minusBambaMix" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="499.0" layoutY="227.0" mnemonicParsing="false" onAction="#decreaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -159,7 +163,7 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <Button fx:id="loginBtn12211" layoutX="511.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
+                                    <Button fx:id="addBambaMix" layoutX="511.0" layoutY="260.0" mnemonicParsing="false" onAction="#addProductToCart" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -169,17 +173,17 @@
                                           <Image url="@../client_images/Cheetos.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" layoutX="216.0" layoutY="179.0" prefHeight="23.0" prefWidth="76.0" text="Cheetos" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="nameCheetos" alignment="CENTER" layoutX="216.0" layoutY="179.0" prefHeight="23.0" prefWidth="76.0" text="Cheetos" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER" layoutX="222.0" layoutY="202.0" prefHeight="19.0" prefWidth="65.0" text="₪3.90" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="priceCheetos" alignment="CENTER" layoutX="222.0" layoutY="202.0" prefHeight="19.0" prefWidth="65.0" text="3.90" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="279.0" layoutY="227.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
+                                    <Button fx:id="plusCheetos" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="279.0" layoutY="227.0" mnemonicParsing="false" onAction="#increaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -187,8 +191,8 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <TextField alignment="CENTER" editable="false" layoutX="236.0" layoutY="228.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="210.0" layoutY="227.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
+                                    <TextField fx:id="cheetosAmount" alignment="CENTER" editable="false" layoutX="236.0" layoutY="228.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
+                                    <Button fx:id="minusCheetos" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="210.0" layoutY="227.0" mnemonicParsing="false" onAction="#decreaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -196,7 +200,7 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <Button fx:id="loginBtn12212" layoutX="222.0" layoutY="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
+                                    <Button fx:id="addCheetos" layoutX="222.0" layoutY="260.0" mnemonicParsing="false" onAction="#addProductToCart" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -206,17 +210,17 @@
                                           <Image url="@../client_images/doritos.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" layoutX="77.0" layoutY="466.0" prefHeight="19.0" prefWidth="65.0" text="Doritos" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="nameDoritos" alignment="CENTER" layoutX="77.0" layoutY="466.0" prefHeight="19.0" prefWidth="65.0" text="Doritos" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER" layoutX="77.0" layoutY="489.0" prefHeight="19.0" prefWidth="65.0" text="₪4.90" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="priceDoritos" alignment="CENTER" layoutX="77.0" layoutY="489.0" prefHeight="19.0" prefWidth="65.0" text="4.90" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="134.0" layoutY="514.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
+                                    <Button fx:id="plusDoritos" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="134.0" layoutY="514.0" mnemonicParsing="false" onAction="#increaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -224,8 +228,8 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <TextField alignment="CENTER" editable="false" layoutX="91.0" layoutY="515.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="65.0" layoutY="514.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
+                                    <TextField fx:id="doritosAmount" alignment="CENTER" editable="false" layoutX="91.0" layoutY="515.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
+                                    <Button fx:id="minusDoritos" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="65.0" layoutY="514.0" mnemonicParsing="false" onAction="#decreaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -233,7 +237,7 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <Button fx:id="loginBtn1222" layoutX="77.0" layoutY="547.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
+                                    <Button fx:id="addDoritos" layoutX="77.0" layoutY="547.0" mnemonicParsing="false" onAction="#addProductToCart" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -243,17 +247,17 @@
                                           <Image url="@../client_images/bisli.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" layoutX="367.0" layoutY="466.0" prefHeight="19.0" prefWidth="65.0" text="Bisli" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="nameBisli" alignment="CENTER" layoutX="367.0" layoutY="466.0" prefHeight="19.0" prefWidth="65.0" text="Bisli" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER" layoutX="367.0" layoutY="489.0" prefHeight="19.0" prefWidth="65.0" text="₪5.90" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="priceBisli" alignment="CENTER" layoutX="367.0" layoutY="489.0" prefHeight="19.0" prefWidth="65.0" text="5.90" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="424.0" layoutY="514.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
+                                    <Button fx:id="plusBisli" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="424.0" layoutY="514.0" mnemonicParsing="false" onAction="#increaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -261,16 +265,8 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <TextField alignment="CENTER" editable="false" layoutX="381.0" layoutY="515.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="355.0" layoutY="514.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
-                                       <font>
-                                          <Font name="Arial Black" size="15.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
-                                       </padding>
-                                    </Button>
-                                    <Button fx:id="loginBtn12213" layoutX="367.0" layoutY="547.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
+                                    <TextField fx:id="bisliAmount" alignment="CENTER" editable="false" layoutX="381.0" layoutY="515.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
+                                    <Button fx:id="addBisli" layoutX="367.0" layoutY="547.0" mnemonicParsing="false" onAction="#addProductToCart" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -280,17 +276,17 @@
                                           <Image url="@../client_images/bamba-nugat.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" layoutX="480.0" layoutY="466.0" prefHeight="23.0" prefWidth="127.0" text="Bamba nougat" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="nameBambaNougat" alignment="CENTER" layoutX="480.0" layoutY="466.0" prefHeight="23.0" prefWidth="127.0" text="Bamba nougat" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER" layoutX="511.0" layoutY="489.0" prefHeight="19.0" prefWidth="65.0" text="₪9.90" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="priceBambaNougat" alignment="CENTER" layoutX="511.0" layoutY="489.0" prefHeight="19.0" prefWidth="65.0" text="9.90" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="568.0" layoutY="514.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
+                                    <Button fx:id="plusBambaNougat" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="568.0" layoutY="514.0" mnemonicParsing="false" onAction="#increaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -298,8 +294,8 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <TextField alignment="CENTER" editable="false" layoutX="525.0" layoutY="515.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="499.0" layoutY="514.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
+                                    <TextField fx:id="bambaNougatAmount" alignment="CENTER" editable="false" layoutX="525.0" layoutY="515.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
+                                    <Button fx:id="minusBambaNougat" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="499.0" layoutY="514.0" mnemonicParsing="false" onAction="#decreaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -307,7 +303,7 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <Button fx:id="loginBtn122111" layoutX="511.0" layoutY="547.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
+                                    <Button fx:id="addBambaNougat" layoutX="511.0" layoutY="547.0" mnemonicParsing="false" onAction="#addProductToCart" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -317,17 +313,17 @@
                                           <Image url="@../client_images/fitness.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" layoutX="216.0" layoutY="466.0" prefHeight="23.0" prefWidth="76.0" text="Fitness" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="nameFitness" alignment="CENTER" layoutX="216.0" layoutY="466.0" prefHeight="23.0" prefWidth="76.0" text="Fitness" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER" layoutX="222.0" layoutY="489.0" prefHeight="19.0" prefWidth="65.0" text="₪5.90" textAlignment="CENTER" textFill="#0e5772">
+                                    <Label fx:id="priceFitness" alignment="CENTER" layoutX="222.0" layoutY="489.0" prefHeight="19.0" prefWidth="65.0" text="5.90" textAlignment="CENTER" textFill="#0e5772">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="279.0" layoutY="514.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
+                                    <Button fx:id="plusFitness" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="279.0" layoutY="514.0" mnemonicParsing="false" onAction="#increaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="+" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -335,8 +331,8 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <TextField alignment="CENTER" editable="false" layoutX="236.0" layoutY="515.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
-                                    <Button accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="210.0" layoutY="514.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
+                                    <TextField fx:id="fitnessAmount" alignment="CENTER" editable="false" layoutX="236.0" layoutY="515.0" prefHeight="25.0" prefWidth="36.0" promptText="0" />
+                                    <Button fx:id="minusFitness" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="210.0" layoutY="514.0" mnemonicParsing="false" onAction="#decreaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Black" size="15.0" />
                                        </font>
@@ -344,10 +340,33 @@
                                           <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
                                        </padding>
                                     </Button>
-                                    <Button fx:id="loginBtn122121" layoutX="222.0" layoutY="547.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
+                                    <Button fx:id="addFitness" layoutX="222.0" layoutY="547.0" mnemonicParsing="false" onAction="#addProductToCart" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Add" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
+                                    </Button>
+                                    <Label alignment="CENTER" layoutX="115.0" layoutY="31.0" prefHeight="27.0" prefWidth="49.0" style="-fx-background-color: FF0000;" text="50%" textFill="WHITE">
+                                       <font>
+                                          <Font name="Cooper Black" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="405.0" layoutY="319.0" prefHeight="27.0" prefWidth="49.0" style="-fx-background-color: FF0000;" text="30%" textFill="WHITE">
+                                       <font>
+                                          <Font name="Cooper Black" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="82.0" layoutY="319.0" prefHeight="27.0" prefWidth="82.0" style="-fx-background-color: FF0000;" text="3 for 10" textFill="WHITE">
+                                       <font>
+                                          <Font name="Cooper Black" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="minusBisli" accessibleRole="INCREMENT_BUTTON" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" layoutX="355.0" layoutY="514.0" mnemonicParsing="false" onAction="#decreaseAmountByOne" prefHeight="27.0" prefWidth="19.0" style="-fx-background-color: #0E5772;" text="-" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="15.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="-0.5" left="3.0" right="3.0" top="-0.5" />
+                                       </padding>
                                     </Button>
                                  </children>
                               </AnchorPane>
@@ -358,13 +377,13 @@
                               <Font name="Calibri Bold" size="30.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="91.0" layoutY="65.0" prefHeight="25.0" prefWidth="176.0" stylesheets="@../client_css/ComboBoxDesign.css" />
+                        <ComboBox fx:id="filterComboBox" layoutX="91.0" layoutY="65.0" prefHeight="25.0" prefWidth="176.0" />
                         <Label alignment="CENTER" layoutX="26.0" layoutY="66.0" prefHeight="19.0" prefWidth="65.0" text="Filter" textAlignment="CENTER" textFill="#0e5772">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="441.0" layoutY="65.0" prefHeight="25.0" prefWidth="176.0" stylesheets="@../client_css/ComboBoxDesign.css" />
+                        <ComboBox fx:id="SortByComboBox" layoutX="441.0" layoutY="65.0" prefHeight="25.0" prefWidth="176.0" />
                         <Label alignment="CENTER" layoutX="368.0" layoutY="66.0" prefHeight="19.0" prefWidth="65.0" text="Sort by" textAlignment="CENTER" textFill="#0e5772">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />

@@ -1,5 +1,5 @@
 package enums;
 
 public enum OrderStatusEnum {
-	DELIVERED, COMPLETED, CONFIRMED;
+	IN_PROCESS, DELIVERED, COMPLETED, CONFIRMED;
 }
