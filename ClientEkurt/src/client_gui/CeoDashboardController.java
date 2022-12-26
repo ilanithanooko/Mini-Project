@@ -20,10 +20,21 @@ public class CeoDashboardController {
 	private Button getSubscribersBtn;
 	@FXML
 	private Button LogoutBtn;
-	//private generalMethods gm = new generalMethods();
+	@FXML
+	private Button viewReportsBtn;
+	@FXML
+	private Button showReportBtn;
 
 	public void start(Stage primaryStage) {
 		generalMethods.displayScreen(primaryStage, getClass(), "/client_fxml/CeoDashboard.fxml", "Ekurt Manager's Menu");
+	}
+	
+	@FXML
+	void viewReports(ActionEvent event) throws Exception {
+		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
+		Stage primaryStage = new Stage();
+		ManagerReportsFxmlController getPage = new ManagerReportsFxmlController();
+		getPage.start(primaryStage);
 	}
 
 	@FXML

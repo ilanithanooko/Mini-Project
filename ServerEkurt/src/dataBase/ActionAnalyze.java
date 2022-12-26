@@ -26,6 +26,18 @@ public class ActionAnalyze {
 	    	LoginQuaries.logoutUsername(obj);
 	    break;
 	    }
+	    case GET_MACHINE: {
+	    	CEOQuaries.getMachine(obj, con);
+	    break;
+	    }
+	    case GET_ORDERS_REPORT: {
+	    	CEOQuaries.getOrderReport(obj, con);
+	    break;
+	    }
+	    case GET_INVENTORY_REPORT: {
+	    	CEOQuaries.getInventoryReport(obj, con);
+	    break;
+	    }
 	}
 		
 	}

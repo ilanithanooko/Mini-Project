@@ -163,7 +163,6 @@ public class LoginFXController extends Application /* implements Initializable *
                 break;
         }
     } 
-
     /**
      * @param location  The location used to resolve relative paths for the root object, or
      *                  {@code null} if the location is not known.
@@ -182,4 +181,3 @@ public class LoginFXController extends Application /* implements Initializable *
     }
     */
 }
-    

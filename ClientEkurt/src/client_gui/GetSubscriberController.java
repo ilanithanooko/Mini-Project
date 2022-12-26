@@ -113,7 +113,6 @@ public class GetSubscriberController implements Initializable {
 		List<String> temp = (List<String>) t.getData();
 		if (t.getResponse() == Response.FOUND_SUBSCRIBERS) {
 			listView.clear();
-			System.out.println(temp);
 		for (int i = 0; i <temp.size(); i++) {
 			list = (temp.get(i).split("\\s+"));
 				listView.add(new Subscriber (list[0],list[1], list[2],list[3],list[4],list[5],list[6]));

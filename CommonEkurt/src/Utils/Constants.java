@@ -13,16 +13,14 @@ import java.util.TreeSet;
  */
 public class Constants {
     public static final int DEFAULT_PORT = 5555;
-    public static final String EMAIL_USERNAME = "zerli.g16@gmail.com";
-    public static final String EMAIL_PASSWORD = "g16.zerli";
     public static final String TEXT_FIELD_VALID_STYLE = "-fx-background-color: transparent; -fx-border-color: #AFDD93; -fx-border-width: 0px 0px 2px 0px;";
     public static final String TEXT_FIELD_NOT_VALID_STYLE = "-fx-background-color: transparent; -fx-border-color: #EB5234; -fx-border-width: 0px 0px 2px 0px;";
     public static final String TEXT_VALID_STYLE = "-fx-fill: #399400;";
     public static final String TEXT_NOT_VALID_STYLE = "-fx-fill: #EB5234;";
     public static final String TIME_FORMAT_STRING = "HH:mm";
-    public static final DateFormat TIME_FORMAT = new SimpleDateFormat(TIME_FORMAT_STRING);
     public static final String SQL_DATE_FORMAT_STRING = "yyyy-MM-dd HH:mm:ss";
     public static final String REPORT_DATE_FORMAT_STRING = "yyyy-MM";
+    public static final DateFormat TIME_FORMAT = new SimpleDateFormat(TIME_FORMAT_STRING);
     public static final DateFormat SQL_DATE_FORMAT = new SimpleDateFormat(SQL_DATE_FORMAT_STRING);
     public static final DateFormat REPORT_DATE_FORMAT = new SimpleDateFormat(REPORT_DATE_FORMAT_STRING);
     public static final String DEFAULT_ITEM_ICON_PATH = "/resources/whiteLeafIcon.png";
@@ -46,30 +44,5 @@ public class Constants {
             "BROWN",
             "CHAMPAGNE"
     ));
-
-    public static final TreeSet<String> MONTHS = new TreeSet<>(Arrays.asList(
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12"
-    ));
-
-    public static final TreeSet<String> YEARS = new TreeSet<>(Arrays.asList(
-            "2022"
-    ));
-
-    public static final TreeSet<String> QUARTERS = new TreeSet<>(Arrays.asList(
-            "1",
-            "2",
-            "3",
-            "4"
-    ));
+    
 }
