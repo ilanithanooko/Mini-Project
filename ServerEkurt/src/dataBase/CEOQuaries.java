@@ -76,19 +76,4 @@ public class CEOQuaries {
 		} else
 			obj.setResponse(Response.DIDNT_FOUND_SUBSCRIBERS);
 	}
-	
-	public static void getMachineList(Transaction obj) {
-		 ResultSet rs = dbController.getInstance().executeQuery("SELECT * FROM ekurt.machines");
-			if (rs == null)
-				obj.setResponse(Response.FAILED);
-			else {
-				List<Machine> machines = new ArrayList<>(Machine.createMachineListFromResultSet(rs));
-				List<String> machineNames = new ArrayList<>();
-				for(int i=0; i<machines.size(); i++) {
-					machineNames.add(machines.get(i).getMachine_name());
-				}
-				obj.setData(machineNames);
-				obj.setResponse(Response.FOUND_MACHINE_NAMES);
-			}	
-	}
 }

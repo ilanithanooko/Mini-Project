@@ -1,6 +1,13 @@
 package logic;
 
-public class Product {
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import enums.RegionEnum;
+
+public class Product{
 	private String name;
 	private int price;
 	private int product_code;

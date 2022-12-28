@@ -44,9 +44,10 @@ public class SubscriberDashboradController {
 	void pickUpButton(ActionEvent event) throws Exception {
 		Stage primaryStage = new Stage();
 		ChooseMachinePickupController chooseMachine = new ChooseMachinePickupController();
-		Transaction listGetter = new Transaction(Action.GET_MACHINES_LIST, null);
-        ClientUI.chat.accept(listGetter); 
+		Transaction machineGetter = new Transaction(Action.GET_MACHINES_LIST, null);
+        ClientUI.chat.accept(machineGetter); 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
+		//System.out.println(ChooseMachinePickupController.getMachineList());
 		chooseMachine.start(primaryStage);
 	}
 	

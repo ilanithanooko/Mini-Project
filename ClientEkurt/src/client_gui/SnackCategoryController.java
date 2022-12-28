@@ -1,169 +1,81 @@
 package client_gui;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import Utils.generalMethods;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class SnackCategoryController {
-    @FXML
-    private ComboBox<?> SortByComboBox;
-    @FXML
-    private Button addApropo;
-    @FXML
-    private Button addBamba;
-    @FXML
-    private Button addBambaMix;
-    @FXML
-    private Button addBambaNougat;
-    @FXML
-    private Button addBisli;
-    @FXML
-    private Button addCheetos;
-    @FXML
-    private Button addDoritos;
-    @FXML
-    private Button addFitness;
-    @FXML
-    private TextField apropoAmount;
+public class SnackCategoryController implements Initializable {
+
     @FXML
     private ImageView backBtn;
-    @FXML
-    private TextField bambaAmount;
-    @FXML
-    private TextField bambaMixAmount;
-    @FXML
-    private TextField bambaNougatAmount;
-    @FXML
-    private TextField bisliAmount;
+
     @FXML
     private Button cancelBtn;
+
     @FXML
     private Button checkoutBtn;
-    @FXML
-    private TextField cheetosAmount;
-    @FXML
-    private TextField doritosAmount;
 
     @FXML
-    private ComboBox<String> filterComboBox;
+    private GridPane gridPane;
 
     @FXML
-    private TextField fitnessAmount;
-
-    @FXML
-    private Button minusApropo;
-
-    @FXML
-    private Button minusBamba;
-
-    @FXML
-    private Button minusBambaMix;
-
-    @FXML
-    private Button minusBambaNougat;
-
-    @FXML
-    private Button minusBisli;
-
-    @FXML
-    private Button minusCheetos;
-
-    @FXML
-    private Button minusDoritos;
-
-    @FXML
-    private Button minusFitness;
-
-    @FXML
-    private Label nameApropo;
-
-    @FXML
-    private Label nameBamba;
-
-    @FXML
-    private Label nameBambaMix;
-
-    @FXML
-    private Label nameBambaNougat;
-
-    @FXML
-    private Label nameBisli;
-
-    @FXML
-    private Label nameCheetos;
-
-    @FXML
-    private Label nameDoritos;
-
-    @FXML
-    private Label nameFitness;
-
-    @FXML
-    private Button plusApropo;
-
-    @FXML
-    private Button plusBamba;
-
-    @FXML
-    private Button plusBambaMix;
-
-    @FXML
-    private Button plusBambaNougat;
-
-    @FXML
-    private Button plusBisli;
-
-    @FXML
-    private Button plusCheetos;
-
-    @FXML
-    private Button plusDoritos;
-
-    @FXML
-    private Button plusFitness;
-
-    @FXML
-    private Label priceApropo;
-
-    @FXML
-    private Label priceBamba;
-
-    @FXML
-    private Label priceBambaMix;
-
-    @FXML
-    private Label priceBambaNougat;
-
-    @FXML
-    private Label priceBisli;
-
-    @FXML
-    private Label priceCheetos;
-
-    @FXML
-    private Label priceDoritos;
-
-    @FXML
-    private Label priceFitness;
+    private ImageView viewCartBtn;
     
 	public void start (Stage primaryStage) {
-		generalMethods.displayScreen(primaryStage, getClass(), "/client_fxml/SnackCategorySubscribers.fxml", "Snacks");
+		generalMethods.displayScreen(primaryStage, getClass(), "/client_fxml/SnackCategory.fxml", "Snacks");
 	}
-    @FXML
-    void addProductToCart(ActionEvent event) {
-
-    }
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		int columns = 0;
+		int row = 1;
+		
+		try {
+			for(int i=0 ; i<SubscriberCategoriesPageController.snackCategoryProducts.size();i++) {
+				VBox box;
+				if(SubscriberCategoriesPageController.snackCategoryProducts.get(i).isAvailable()) {
+					FXMLLoader fxmlLoader = new FXMLLoader();
+					fxmlLoader.setLocation(getClass().getResource("/client_fxml/ProductInGrid.fxml"));
+					box = fxmlLoader.load();
+					ProductInGridController productInGridController = fxmlLoader.getController();
+					productInGridController.setData(SubscriberCategoriesPageController.snackCategoryProducts.get(i));
+				}
+				else {
+					FXMLLoader fxmlLoader = new FXMLLoader();
+					fxmlLoader.setLocation(getClass().getResource("/client_fxml/ProductNotInStock.fxml"));
+					box = fxmlLoader.load();
+					ProductInGridController productInGridController = fxmlLoader.getController();
+					productInGridController.setData(SubscriberCategoriesPageController.snackCategoryProducts.get(i));
+				}
+				if(columns == 4) {
+					columns = 0;
+					++row;
+				}
+				gridPane.add(box, columns++, row);
+				gridPane.setMargin(box, new Insets(8));
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
     @FXML
     void clickOnBackButton(MouseEvent event) {
+    	//don't forget to add case for customer
     	((Node) event.getSource()).getScene().getWindow().hide();
     	new SubscriberCategoriesPageController().start(new Stage());
     }
@@ -179,13 +91,7 @@ public class SnackCategoryController {
     }
 
     @FXML
-    void decreaseAmountByOne(ActionEvent event) {
+    void clickOnViewCart(MouseEvent event) {
 
     }
-
-    @FXML
-    void increaseAmountByOne(ActionEvent event) {
-
-    }
-
 }

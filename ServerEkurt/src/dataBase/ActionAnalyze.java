@@ -20,17 +20,23 @@ public class ActionAnalyze {
 			}
 	    case LOGIN_USERNAME_PASSWORD:{
 	    	LoginQuaries.loginByUsernameAndPassword(obj);
-		break;
+	    	break;
 		}
 	    case LOGOUT_USER: {
 	    	LoginQuaries.logoutUsername(obj);
-	    break;
+	    	break;
 	    }
 	    case GET_MACHINES_LIST: {
-	    	CEOQuaries.getMachineList(obj);
-	    break;
+	    	OrderQueries.getMachineList(obj);
+	    	break;
+	    }
+	    case GET_AVAILABLE_PRODUCTS_IN_MACHINE: {
+	    		OrderQueries.getProductCodesInMachine(obj);
+	    	break;
+	    }
+	    case GET_NOT_AVAILABLE_PRODUCTS_IN_MACHINE: {
+	    	OrderQueries.getProductCodesInMachineNotInStock(obj);
 	    }
 	}
-		
 	}
 }

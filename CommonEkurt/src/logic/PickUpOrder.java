@@ -29,6 +29,7 @@ public class PickUpOrder {
 	public User getClient() {
 		return client;
 	}
+
 	public void setClient(User client) {
 		this.client = client;
 	}

@@ -63,7 +63,6 @@ public class Machine {
 		this.city = city;
 	}
 	
-	
     public static List<Machine> createMachineListFromResultSet(ResultSet rs){
         List<Machine> machines = new ArrayList<>();
         try{
