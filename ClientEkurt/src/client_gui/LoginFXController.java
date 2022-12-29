@@ -34,11 +34,9 @@ import clientUtil.*;
 /**
  * This class defines User Login screen
  */
-<<<<<<< HEAD
+
 public class LoginFXController extends Application  implements Initializable {
-=======
-public class LoginFXController extends Application implements Initializable {
->>>>>>> 16d22f61964f3ef25b97bcc0340b94e4c71b868f
+
     @FXML
     private Button loginButton;
     @FXML
@@ -46,15 +44,10 @@ public class LoginFXController extends Application implements Initializable {
     @FXML
     private TextField userNameField;
     @FXML
-<<<<<<< HEAD
-    private Label loginErrorLabel = new Label();
-=======
-    private Label loginErrorLabel;
->>>>>>> 16d22f61964f3ef25b97bcc0340b94e4c71b868f
-    
+    private Label loginErrorLabel;    
     public static Stage primaryStage = new Stage();
     public static String currentUsername;
-    //public static StringProperty loginStatus = new SimpleStringProperty();
+    public static StringProperty loginStatus = new SimpleStringProperty();
     private generalMethods gm = new generalMethods();
     /**
      * Start screen and initialize the Stage and scene for the screen
@@ -68,12 +61,8 @@ public class LoginFXController extends Application implements Initializable {
 	@Override
     public void start(Stage primaryStage) throws Exception {
     	this.primaryStage = primaryStage;
-<<<<<<< HEAD
-        gm.displayScreen(primaryStage, getClass(),"/client_fxml/LoginPage.fxml","Login");
-=======
     	loginErrorLabel = new Label();
         gm.displayScreen(primaryStage, getClass(),"/client_fxml/LoginPage.fxml","Login Page");
->>>>>>> 16d22f61964f3ef25b97bcc0340b94e4c71b868f
     }
 
     /**
@@ -118,7 +107,6 @@ public class LoginFXController extends Application implements Initializable {
 						CEODashboard.start(primaryStage);
 				});
 	            break;
-<<<<<<< HEAD
 	        case CUSTOMER:
 	        	CustomerDashboardController CustomerODashboard = new CustomerDashboardController();
 	            Platform.runLater(() -> {
@@ -130,14 +118,21 @@ public class LoginFXController extends Application implements Initializable {
 	            Platform.runLater(() -> {
 	            	subDashboard.start(primaryStage);
 				});
-	            break;	
-	    }
+	            break;
+	        case MARKETING_WORKER:
+	        	MarketingWorkerDashboardFXController MWDashboard = new MarketingWorkerDashboardFXController();
+	            Platform.runLater(() -> {
+						MWDashboard.start(primaryStage);
+				});
+	            break;  
+	        case DELIVERY_OPERATOR:
+	        	DeliveryOperatorDashboardController DODashboard = new DeliveryOperatorDashboardController();
+	            Platform.runLater(() -> {
+						DODashboard.start(primaryStage);
+				});
+	            break;
+        }
     }
-    
-    void setLoginErrorLableToAlreadyLoggedIn(String loginStatusStr) throws Exception {
-    	loginErrorLabel.setVisible(true);
-    }
-    	//loginStatus.setValue(loginStatusStr);    }
 
     /**
      * @param location  The location used to resolve relative paths for the root object, or
@@ -158,22 +153,8 @@ public class LoginFXController extends Application implements Initializable {
 //            loginErrorLabel.setTextAlignment(TextAlignment.CENTER);
 //            loginErrorLabel.setVisible(newValue.contains("incorrect") || newValue.contains("already logged-in"));
 //        });  
-}
-=======
-	        case MARKETING_WORKER:
-	        	MarketingWorkerDashboardFXController MWDashboard = new MarketingWorkerDashboardFXController();
-	            Platform.runLater(() -> {
-						MWDashboard.start(primaryStage);
-				});
-	            break;  
-	        case DELIVERY_OPERATOR:
-	        	DeliveryOperatorDashboardController DODashboard = new DeliveryOperatorDashboardController();
-	            Platform.runLater(() -> {
-						DODashboard.start(primaryStage);
-				});
-	            break;
-        }
-    }
+
+
     
     void setLoginErrorLabelToAlreadyLoggedIn(String loginStatusStr) {
         loginStatus.set(loginStatusStr);
@@ -182,61 +163,5 @@ public class LoginFXController extends Application implements Initializable {
             loginErrorLabel.setVisible(true);
         });
     }
-
-   // @Override
-   public void initialize(URL location, ResourceBundle resources) {}
-   //     loginStatus.addListener((observable, oldValue, newValue) -> {
-   //         if (newValue.equals("Already logged in")) {
-   //             loginErrorLabel.setText("Already logged in");
-   //             loginErrorLabel.setVisible(true);
-   //         }
-   //    });
-    }
-
-
-    /**
-     * Show the relevant side navigation for each role
-     * @param roleEnum The user's role
-     */
-    
-   // public static void openSideNavigationByRole(RoleEnum roleEnum) throws Exception {
-       
-            
-  //      }
-   // }
-                /*
-            case CLIENT:
-                SidenavigationClientFXController sidenavigationClientFXController = new SidenavigationClientFXController();
-                Platform.runLater(() -> sidenavigationClientFXController.start(primaryStage));
-                break;
-            case COMPANY_MARKETING_WORKER:
-                SidenavigationCompanyMarketingWorkerFXController sidenavigationCompanyMarketingWorkerFXController = new SidenavigationCompanyMarketingWorkerFXController();
-                Platform.runLater(() -> sidenavigationCompanyMarketingWorkerFXController.start(primaryStage));
-                break;
-            case CUSTOMER_SERVICE_WORKER:
-                SidenavigationCustomerServiceWorkerFXController sidenavigationCustomerServiceWorkerFXController = new SidenavigationCustomerServiceWorkerFXController();
-                Platform.runLater(() -> sidenavigationCustomerServiceWorkerFXController.start(primaryStage));
-                break;
-            case STORE_MANAGER:
-                SidenavigationStoreManagerFXController sidenavigationStoreManagerFXController = new SidenavigationStoreManagerFXController();
-                Platform.runLater(() -> sidenavigationStoreManagerFXController.start(primaryStage));
-                break;
-            case STORE_WORKER:
-                SidenavigationStoreWorkerFXController sidenavigationStoreWorkerFXController = new SidenavigationStoreWorkerFXController();
-                Platform.runLater(() -> sidenavigationStoreWorkerFXController.start(primaryStage));
-                break;
-            case SERVICE_EXPERT:
-                SidenavigationServiceExpertFXController sidenavigationServiceExpertFXController = new SidenavigationServiceExpertFXController();
-                Platform.runLater(() -> sidenavigationServiceExpertFXController.start(primaryStage));
-                break;
-            case DELIVERY_MAN:
-                SidenavigationDeliverymanFXController sidenavigationDeliveryManFXController = new SidenavigationDeliverymanFXController();
-                Platform.runLater(() -> sidenavigationDeliveryManFXController.start(primaryStage));
-                break;
-        }
-    } */
-
-    
-
->>>>>>> 16d22f61964f3ef25b97bcc0340b94e4c71b868f
+}
     

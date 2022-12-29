@@ -46,13 +46,7 @@ public class LoginController {
     
     public void updateLoginStatusToAlreadyLoggedIn(Transaction msg) throws Exception {
     	String loginStatus = "User already logged-in";
-<<<<<<< HEAD
-    	loginFXController.setLoginErrorLableToAlreadyLoggedIn(loginStatus);
-=======
     	loginFXController.setLoginErrorLabelToAlreadyLoggedIn(loginStatus);
-    	
-    	
->>>>>>> 16d22f61964f3ef25b97bcc0340b94e4c71b868f
     }
     
     public static void updateLoginStatusToIncorrectVals(Transaction msg) throws Exception {
