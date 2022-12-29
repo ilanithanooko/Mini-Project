@@ -1,5 +1,6 @@
 package client_gui;
 
+
 import java.io.IOException;
 
 import Utils.generalMethods;
@@ -14,25 +15,25 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import clientUtil.ClientUtils;
 
-public class CeoDashboardController {
+public class DeliveryOperatorDashboardController {
 
 	@FXML
-	private Button getSubscribersBtn;
+	private Button ManagerOrdersBtn;
 	@FXML
 	private Button LogoutBtn;
 	//private generalMethods gm = new generalMethods();
 
 	public void start(Stage primaryStage) {
-		generalMethods.displayScreen(primaryStage, getClass(), "/client_fxml/CeoDashboard.fxml", "Ekurt Manager's Menu");
+		generalMethods.displayScreen(primaryStage, getClass(), "/client_fxml/DeliveryOperatorDashboard.fxml", "Delivery Operator window");
 	}
 
 	@FXML
-	void Get(ActionEvent event) throws Exception {
+	void ManagerOrders(ActionEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
-		GetSubscriberController getPage = new GetSubscriberController();
+		ManageOrdersFXController getPage = new ManageOrdersFXController();
 		getPage.start(primaryStage);
-	}
+		}
 	
 	@FXML
 	void logout(ActionEvent event) throws Exception {

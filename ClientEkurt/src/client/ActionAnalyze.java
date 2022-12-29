@@ -2,6 +2,7 @@ package client;
 
 import client_gui.LoginController;
 import client_gui.LoginFXController;
+import client_gui.PromoteOffersFXController;
 import common.Transaction;
 
 public class ActionAnalyze {
@@ -41,7 +42,20 @@ public class ActionAnalyze {
 			loginController.updateLoginStatusToIncorrectVals(msg);
 			break;
 		}
+		case FOUND_OFFERS:{
+			//PromoteOffersFXController.setTableScreen(msg);
+			break;
 		}
+		case FAILED_TO_GET_OFFERS:{
+			break;
+		}
+		case FOUND_ORDERS:{
+			break;
+		}
+		case FAILED_TO_GET_ORDERS:{
+			break;
+		}
+	}
 		return false;
 	}
 }

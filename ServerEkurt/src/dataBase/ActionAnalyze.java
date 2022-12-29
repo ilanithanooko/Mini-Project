@@ -26,6 +26,14 @@ public class ActionAnalyze {
 	    	LoginQuaries.logoutUsername(obj);
 	    break;
 	    }
+	    case GET_OFFERS:{
+	    	OffersQuaries.getOffers(obj);
+	    break;
+	    }
+	    case GET_ORDERS:{
+	    	DeliveryOperatorQuaries.getOrders(obj);
+	    break;
+	    }
 	}
 		
 	}

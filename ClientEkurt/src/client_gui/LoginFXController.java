@@ -32,7 +32,7 @@ import clientUtil.*;
 /**
  * This class defines User Login screen
  */
-public class LoginFXController extends Application /* implements Initializable */{
+public class LoginFXController extends Application implements Initializable {
     @FXML
     private Button loginButton;
     @FXML
@@ -40,8 +40,8 @@ public class LoginFXController extends Application /* implements Initializable *
     @FXML
     private TextField userNameField;
     @FXML
-    private Label loginErrorLabel = new Label("Start");
-
+    private Label loginErrorLabel;
+    
     public static Stage primaryStage = new Stage();
     public static String currentUsername;
     public static StringProperty loginStatus = new SimpleStringProperty("");
@@ -59,6 +59,7 @@ public class LoginFXController extends Application /* implements Initializable *
 	@Override
     public void start(Stage primaryStage) throws Exception {
     	this.primaryStage = primaryStage;
+    	loginErrorLabel = new Label();
         gm.displayScreen(primaryStage, getClass(),"/client_fxml/LoginPage.fxml","Login Page");
     }
 
@@ -109,19 +110,40 @@ public class LoginFXController extends Application /* implements Initializable *
 						CEODashboard.start(primaryStage);
 				});
 	            break;
-	    }
+	        case MARKETING_WORKER:
+	        	MarketingWorkerDashboardFXController MWDashboard = new MarketingWorkerDashboardFXController();
+	            Platform.runLater(() -> {
+						MWDashboard.start(primaryStage);
+				});
+	            break;  
+	        case DELIVERY_OPERATOR:
+	        	DeliveryOperatorDashboardController DODashboard = new DeliveryOperatorDashboardController();
+	            Platform.runLater(() -> {
+						DODashboard.start(primaryStage);
+				});
+	            break;
+        }
     }
     
-    void setLoginErrorLableToAlreadyLoggedIn(String loginStatusStr) throws Exception {
-        loginStatus.set("User already logged-in");
+    void setLoginErrorLabelToAlreadyLoggedIn(String loginStatusStr) {
+        loginStatus.set(loginStatusStr);
         Platform.runLater(() -> {
-//        	loginErrorLabel.setText("User already logged-in");
-//            loginErrorLabel.setVisible(true);
-            loginErrorLabel.textProperty().bind(loginStatus);
-
-		});
+            loginErrorLabel.setText(loginStatusStr);
+            loginErrorLabel.setVisible(true);
+        });
     }
-    
+
+   // @Override
+   public void initialize(URL location, ResourceBundle resources) {}
+   //     loginStatus.addListener((observable, oldValue, newValue) -> {
+   //         if (newValue.equals("Already logged in")) {
+   //             loginErrorLabel.setText("Already logged in");
+   //             loginErrorLabel.setVisible(true);
+   //         }
+   //    });
+    }
+
+
     /**
      * Show the relevant side navigation for each role
      * @param roleEnum The user's role
@@ -162,24 +184,8 @@ public class LoginFXController extends Application /* implements Initializable *
                 Platform.runLater(() -> sidenavigationDeliveryManFXController.start(primaryStage));
                 break;
         }
-    } 
+    } */
 
-    /**
-     * @param location  The location used to resolve relative paths for the root object, or
-     *                  {@code null} if the location is not known.
-     * @param resources The resources used to localize the root object, or {@code null} if
-     *                  the root object was not localized.
-     */
     
-   /*
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        	loginStatus.addListener((observable, oldValue, newValue) -> {
-            loginErrorLabel.setText(newValue);
-            loginErrorLabel.setTextAlignment(TextAlignment.CENTER);
-            loginErrorLabel.setVisible(newValue.contains("incorrect") || newValue.contains("already logged-in"));
-        });
-    }
-    */
-}
+
     

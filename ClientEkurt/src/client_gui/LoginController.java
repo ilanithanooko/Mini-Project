@@ -44,12 +44,11 @@ public class LoginController {
             currUserRole = ClientUtils.currUser.getRole();
         }
 		loginFXController.openDashboardByRole(loginStatus, currUserRole);
-    	
     }
     
     	public void updateLoginStatusToAlreadyLoggedIn(Transaction msg) throws Exception {
     	String loginStatus = "User already logged-in";
-    	loginFXController.setLoginErrorLableToAlreadyLoggedIn(loginStatus);
+    	loginFXController.setLoginErrorLabelToAlreadyLoggedIn(loginStatus);
     	
     	
     }

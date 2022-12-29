@@ -1,7 +1,7 @@
 .combo-box .list-cell 
 {
     -fx-background: #0e5772;
-    -fx-background-color: transparent;
+    -fx-background-color: #0E5772;
     -fx-text-fill: white;
     -fx-font: 14px system; 
     -fx-font-weight: bold;
@@ -21,7 +21,7 @@
     -fx-padding: 4 0 4 5;
 
     /* No alternate highlighting */
-    -fx-background-color: white;
+    -fx-background-color: #0E5772;
 }
 
 .combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover 
@@ -36,7 +36,7 @@
     -fx-background-color: white;
     -fx-text-fill: white;
 }
-
+/* 
 .combo-box-base  
 {
     -fx-skin: "com.sun.javafx.scene.control.skin.ComboBoxBaseSkin";
@@ -46,6 +46,8 @@
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-padding: 0;
 }
+* 
+*/
 
 .combo-box-base:hover
 {
