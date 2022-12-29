@@ -39,9 +39,9 @@
                   <Image url="@../client_images/EKURT.png" />
                </image>
             </ImageView>
-            <Label id="loginErrorLabel" fx:id="loginErrorLabel" layoutX="78.0" layoutY="284.0" prefHeight="27.0" prefWidth="191.0" textFill="#fd0000" wrapText="true">
+            <Label fx:id="loginErrorLabel" layoutX="78.0" layoutY="284.0" prefHeight="27.0" prefWidth="191.0" textFill="#fd0000" wrapText="true">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Label>
          </children>
