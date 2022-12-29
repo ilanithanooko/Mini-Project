@@ -1,5 +1,5 @@
 package common;
-
+import logic.*;
 import java.io.Serializable;
 
 public class Transaction implements Serializable{
@@ -7,6 +7,10 @@ public class Transaction implements Serializable{
 	private Action action;
 	private Response response;
 	private Object data;
+	
+	public Transaction() {
+		
+	}
 
 	public Transaction(Action mission, Response response, Object information) {
 

@@ -10,6 +10,7 @@ import java.util.List;
 
 import common.Response;
 import common.Transaction;
+import logic.Machine;
 
 public class CEOQuaries {
 

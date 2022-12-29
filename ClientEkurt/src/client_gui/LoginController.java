@@ -27,16 +27,14 @@ public class LoginController {
         args.put("username", username);
         args.put("password", password);
         Transaction msg = new Transaction(Action.LOGIN_USERNAME_PASSWORD, args);
-        ClientUI.chat.accept(msg);
-        
+        ClientUI.chat.accept(msg); 
     }
     /**
      * This method creates a new message used to update the login status of an account in the GUI and the Current User
      * @param msg The message containing the answer regarding the log in status of the account from the server
      * @throws Exception 
      */
-    
-    	public void updateLoginStatusToSucceed(Transaction msg) throws Exception {
+    public void updateLoginStatusToSucceed(Transaction msg) throws Exception {
     	String loginStatus = "Login successfully";
         RoleEnum currUserRole = null;
         if (msg.getData() instanceof User) {
@@ -46,11 +44,9 @@ public class LoginController {
 		loginFXController.openDashboardByRole(loginStatus, currUserRole);
     }
     
-    	public void updateLoginStatusToAlreadyLoggedIn(Transaction msg) throws Exception {
+    public void updateLoginStatusToAlreadyLoggedIn(Transaction msg) throws Exception {
     	String loginStatus = "User already logged-in";
     	loginFXController.setLoginErrorLabelToAlreadyLoggedIn(loginStatus);
-    	
-    	
     }
     
     public static void updateLoginStatusToIncorrectVals(Transaction msg) throws Exception {
