@@ -1,6 +1,9 @@
 package logic;
 
+import enums.RegionEnum;
 import enums.RoleEnum;
+import enums.StatusEnum;
+
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,8 +23,11 @@ public class User implements Serializable {
     private String email;
     private String telephone;
     private RoleEnum role;
+    private RegionEnum region;
+    private StatusEnum status;
 
-    /**
+ 
+	/**
      * Constructor
      * @param id
      * @param username
@@ -33,7 +39,7 @@ public class User implements Serializable {
      * @param telephone
      * @param role
      */
-    public User(int id, String username, String password, boolean isLoggedIn, String firstName, String lastName, String email, String telephone, RoleEnum role) {
+    public User(int id, String username, String password, boolean isLoggedIn, String firstName, String lastName, String email, String telephone, RoleEnum role,StatusEnum status,RegionEnum region) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -43,9 +49,19 @@ public class User implements Serializable {
         this.email = email;
         this.telephone = telephone;
         this.role = role;
+        this.status=status;
+        this.region=region;
     }
 
-    public int getId() {
+    public StatusEnum getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusEnum status) {
+		this.status = status;
+	}
+
+	public int getId() {
         return id;
     }
 
@@ -111,6 +127,14 @@ public class User implements Serializable {
     public void setRole(RoleEnum role) {
         this.role = role;
     }
+    public RegionEnum getRegion() {
+ 		return region;
+ 	}
+
+ 	public void setRegion(RegionEnum region) {
+ 		this.region = region;
+ 	}
+
     /*
     public void setAccount(Account account) {
         this.account = account;
@@ -138,8 +162,11 @@ public class User implements Serializable {
                         rs.getString("lastname"),
                         rs.getString("email"),
                         rs.getString("telephone"),
-                        RoleEnum.valueOf(rs.getString("role"))
-                ));
+                        RoleEnum.valueOf(rs.getString("role")),
+                        StatusEnum.valueOf(rs.getString("status")),
+                        RegionEnum.valueOf(rs.getString("region"))
+                        )
+                );
             }
         } catch (SQLException e) {
             e.printStackTrace();

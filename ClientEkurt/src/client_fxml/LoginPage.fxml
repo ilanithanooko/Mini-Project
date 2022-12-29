@@ -39,7 +39,15 @@
                   <Image url="@../client_images/EKURT.png" />
                </image>
             </ImageView>
+<<<<<<< HEAD
             <Label id="loginErrorLabel" fx:id="loginErrorLabel" alignment="CENTER" layoutX="47.0" layoutY="294.0" prefHeight="18.0" prefWidth="253.0" textFill="RED" />
+=======
+            <Label fx:id="loginErrorLabel" layoutX="78.0" layoutY="284.0" prefHeight="27.0" prefWidth="191.0" textFill="#fd0000" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+>>>>>>> 16d22f61964f3ef25b97bcc0340b94e4c71b868f
          </children>
       </AnchorPane>
    </children>

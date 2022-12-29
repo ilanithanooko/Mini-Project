@@ -8,7 +8,11 @@ import client_gui.ChooseMachinePickupController;
 import client_gui.FoodCategoryController;
 import client_gui.LoginController;
 import client_gui.LoginFXController;
+<<<<<<< HEAD
 import client_gui.SubscriberCategoriesPageController;
+=======
+import client_gui.PromoteOffersFXController;
+>>>>>>> 16d22f61964f3ef25b97bcc0340b94e4c71b868f
 import common.Transaction;
 import logic.*;
 
@@ -49,6 +53,7 @@ public class ActionAnalyze {
 			loginController.updateLoginStatusToIncorrectVals(msg);
 			break;
 		}
+<<<<<<< HEAD
 		case FOUND_MACHINE_NAMES: {
 			ChooseMachinePickupController.setMachineNames((List<String>)msg.getData());
 			break;
@@ -65,7 +70,22 @@ public class ActionAnalyze {
 //			ChooseMachinePickupController.setMachineNames((List<String>)msg.getData());
 //			break;
 //		}
+=======
+		case FOUND_OFFERS:{
+			//PromoteOffersFXController.setTableScreen(msg);
+			break;
+>>>>>>> 16d22f61964f3ef25b97bcc0340b94e4c71b868f
 		}
+		case FAILED_TO_GET_OFFERS:{
+			break;
+		}
+		case FOUND_ORDERS:{
+			break;
+		}
+		case FAILED_TO_GET_ORDERS:{
+			break;
+		}
+	}
 		return false;
 	}
 }

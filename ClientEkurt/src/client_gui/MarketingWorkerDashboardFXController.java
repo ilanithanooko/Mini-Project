@@ -14,24 +14,24 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import clientUtil.ClientUtils;
 
-public class CeoDashboardController {
+public class MarketingWorkerDashboardFXController {
 
 	@FXML
-	private Button getSubscribersBtn;
+	private Button PromoteOffers;
 	@FXML
 	private Button LogoutBtn;
 	//private generalMethods gm = new generalMethods();
 
 	public void start(Stage primaryStage) {
-		generalMethods.displayScreen(primaryStage, getClass(), "/client_fxml/CeoDashboard.fxml", "Ekurt Manager's Menu");
+		generalMethods.displayScreen(primaryStage, getClass(), "/client_fxml/MarketingWorkerDashboard.fxml", "Ekurt marketing worker Menu");
 	}
 
 	@FXML
-	void Get(ActionEvent event) throws Exception {
+	void PromoteOffers(ActionEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
-		GetSubscriberController getPage = new GetSubscriberController();
-		getPage.start(primaryStage);
+		PromoteOffersFXController PromotePage = new PromoteOffersFXController();
+		PromotePage.start(primaryStage);
 	}
 	
 	@FXML
@@ -42,5 +42,4 @@ public class CeoDashboardController {
 		LoginFXController getPage = new LoginFXController();
 		getPage.start(primaryStage);
 	}
-	
 }
