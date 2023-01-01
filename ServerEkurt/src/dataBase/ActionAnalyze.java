@@ -36,6 +36,7 @@ public class ActionAnalyze {
 	    }
 	    case GET_NOT_AVAILABLE_PRODUCTS_IN_MACHINE: {
 	    	OrderQueries.getProductCodesInMachineNotInStock(obj);
+	    	break;
 	    }
 	    case GET_OFFERS:{
 	    	OffersQuaries.getOffers(obj);
@@ -44,6 +45,9 @@ public class ActionAnalyze {
 	    case GET_ORDERS:{
 	    	DeliveryOperatorQuaries.getOrders(obj);
 	    break;
+	    }
+	    case GET_CUR_STOCK: {
+	    	OrderQueries.getProductInMachineStock(obj);
 	    }
 	}
 	}

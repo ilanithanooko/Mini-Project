@@ -80,6 +80,10 @@ public class ActionAnalyze {
 		case FAILED_TO_GET_ORDERS:{
 			break;
 		}
+		case FOUND_CUR_STOCK: {
+			
+			break;
+		}
 	}
 		return false;
 	}

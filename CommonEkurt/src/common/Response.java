@@ -17,7 +17,8 @@ public enum Response {
 	FAILED_TO_GET_OFFERS("FAILED_TO_GET_OFFERS", 13),
 	FOUND_OFFERS("FOUND_OFFERS",14),
 	FAILED_TO_GET_ORDERS("FOUND_ORDERS",15),
-	FOUND_ORDERS("FOUND_ORDERS",16);
+	FOUND_ORDERS("FOUND_ORDERS",16),
+	FOUND_CUR_STOCK("FOUND_CUR_STOCK", 17);
 	private Response(final String response,final int serialNumber) {
 	}
 }

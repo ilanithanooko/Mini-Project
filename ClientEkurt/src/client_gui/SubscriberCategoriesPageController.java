@@ -46,6 +46,12 @@ public class SubscriberCategoriesPageController {
     	new ChooseMachinePickupController().start(new Stage());
     	
     	//implement removing products from ALL categories to avoid dupliacation
+//    	DrinksCategoryController.gridPane.getChildren().clear();
+//    	SweetsCategoryController.gridPane.getChildren().clear();
+//    	SnackCategoryController.gridPane.getChildren().clear();
+//    	FoodCategoryController.gridPane.getChildren().clear();
+
+
     }
 
     @FXML
@@ -135,7 +141,7 @@ public class SubscriberCategoriesPageController {
 		
     @FXML
     void clickOnViewCart(MouseEvent event) {
-
+    	new CartPageController().start(new Stage());
     }
 
 }

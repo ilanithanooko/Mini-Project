@@ -77,6 +77,7 @@ public class DrinksCategoryController implements Initializable {
     void clickOnBackButton(MouseEvent event) {
     	
     	//don't forget to add case for customer
+    	gridPane.getChildren().clear();
     	((Node) event.getSource()).getScene().getWindow().hide();
     	new SubscriberCategoriesPageController().start(new Stage());
     }
@@ -93,7 +94,7 @@ public class DrinksCategoryController implements Initializable {
 
     @FXML
     void clickOnViewCart(MouseEvent event) {
-
+    	new CartPageController().start(new Stage());
     }
     
     

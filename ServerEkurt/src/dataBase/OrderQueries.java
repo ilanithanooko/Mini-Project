@@ -82,4 +82,27 @@ public class OrderQueries {
 		
 		
 	}
+	
+	public static void getProductInMachineStock(Transaction obj) {
+		if (obj.getData() instanceof ArrayList<?>) {
+			ArrayList<String> list = ArrayList.class.cast(obj.getData());
+
+			int stock = 0;
+			ResultSet rs = dbController.getInstance().executeQuery("SELECT ekurt.productinmachine.stock FROM ekurt.productinmachine WHERE pro_code = (SELECT pro_code FROM ekurt.products WHERE pro_name = '" + list.get(1) + "') AND (machine_code = (SELECT machine_code FROM ekurt.machines where machine_name='" + list.get(0) + "') );");
+			if (rs == null)
+				obj.setResponse(Response.FAILED);
+			else {
+				try {
+					if (rs.next()) {
+					    stock = rs.getInt("stock");
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				obj.setData(stock);
+				obj.setResponse(Response.FOUND_CUR_STOCK);
+			}
+		}
+	}
 }

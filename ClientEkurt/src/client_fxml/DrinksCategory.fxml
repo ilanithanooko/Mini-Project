@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.0" prefWidth="1061.0" style="-fx-background-color: EEF6FD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.DrinksCategoryController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="806.0" style="-fx-background-color: EEF6FD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.DrinksCategoryController">
    <top>
       <HBox prefHeight="110.0" prefWidth="932.0" BorderPane.alignment="CENTER">
          <children>
@@ -42,50 +42,26 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Pane prefHeight="110.0" prefWidth="281.0" />
-            <Label alignment="CENTER" prefHeight="110.0" prefWidth="323.0" text="Drinks Category" textFill="#0e5772">
+            <Pane prefHeight="110.0" prefWidth="56.0" />
+            <Label alignment="CENTER" prefHeight="110.0" prefWidth="493.0" text="Drinks Category" textFill="#0e5772">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Pane prefHeight="110.0" prefWidth="291.0" />
-            <ImageView fitHeight="103.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../client_images/EKURT.png" />
-               </image>
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin>
-            </ImageView>
+            <Pane prefHeight="110.0" prefWidth="227.0">
+               <children>
+                  <ImageView fitHeight="103.0" fitWidth="85.0" layoutX="98.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../client_images/EKURT.png" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
          </children></HBox>
    </top>
-   <left>
-      <VBox prefHeight="544.0" prefWidth="267.0" BorderPane.alignment="CENTER">
-         <children>
-            <ScrollPane prefHeight="494.0" prefWidth="267.0" stylesheets="@../client_css/scrollPaneDesign.css" />
-            <VBox prefHeight="135.0" prefWidth="267.0" />
-            <Button fx:id="checkoutBtn" mnemonicParsing="false" onAction="#clickOnCheckout" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Checkout" textFill="WHITE" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="15.0" left="60.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#clickOnCancel" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Cancel" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="30.0" left="60.0" />
-               </VBox.margin>
-            </Button>
-         </children></VBox>
-   </left>
    <center>
       <VBox prefHeight="544.0" prefWidth="697.0" style="-fx-background-color: EEF6FD;" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane prefHeight="556.0" prefWidth="682.0" stylesheets="@../client_css/scrollPaneDesign.css" VBox.vgrow="ALWAYS">
+            <ScrollPane prefHeight="441.0" prefWidth="898.0" stylesheets="@../client_css/scrollPaneDesign.css" VBox.vgrow="ALWAYS">
                <content>
                   <GridPane fx:id="gridPane" prefHeight="30.0" prefWidth="1.0" style="-fx-background-color: EEF6FD;">
                     <rowConstraints>
@@ -97,4 +73,19 @@
          </children>
       </VBox>
    </center>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="100.0" prefWidth="965.0">
+               <children>
+                  <Button fx:id="checkoutBtn" layoutX="327.0" layoutY="28.0" mnemonicParsing="false" onAction="#clickOnCheckout" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Checkout" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>

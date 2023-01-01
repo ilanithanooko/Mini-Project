@@ -30,7 +30,6 @@ public class SnackCategoryController implements Initializable {
 
     @FXML
     private GridPane gridPane;
-
     @FXML
     private ImageView viewCartBtn;
     
@@ -76,6 +75,7 @@ public class SnackCategoryController implements Initializable {
     @FXML
     void clickOnBackButton(MouseEvent event) {
     	//don't forget to add case for customer
+    	gridPane.getChildren().clear();
     	((Node) event.getSource()).getScene().getWindow().hide();
     	new SubscriberCategoriesPageController().start(new Stage());
     }
@@ -92,6 +92,6 @@ public class SnackCategoryController implements Initializable {
 
     @FXML
     void clickOnViewCart(MouseEvent event) {
-
+    	new CartPageController().start(new Stage());
     }
 }

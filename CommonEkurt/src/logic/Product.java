@@ -8,17 +8,29 @@ import java.util.List;
 import enums.RegionEnum;
 
 public class Product{
-	private String name;
-	private int price;
-	private int product_code;
-	private int amount;
+	@Override
+	public String toString() {
+		return "Product [name=" + name + ", price=" + price + ", amount=" + amount + "]";
+	}
 
-	public Product(String name, int price, int product_code, int amount) {
+	private String name;
+	private float price;
+	//private int product_code;
+	private int amount;
+	private float finalPrice;
+
+	public float getFinalPrice() {
+		return finalPrice;
+	}
+
+	public Product(String name, float price, int amount) {
 		super();
 		this.name = name;
 		this.price = price;
-		this.product_code = product_code;
+		//this.product_code = product_code;
 		this.amount = amount;
+		finalPrice = this.price * this.amount;
+		
 	}
 	
 	public String getName() {
@@ -29,21 +41,21 @@ public class Product{
 		this.name = name;
 	}
 
-	public int getPrice() {
+	public float getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 
-	public int getProduct_code() {
-		return product_code;
-	}
-
-	public void setProduct_code(int product_code) {
-		this.product_code = product_code;
-	}
+//	public int getProduct_code() {
+//		return product_code;
+//	}
+//
+//	public void setProduct_code(int product_code) {
+//		this.product_code = product_code;
+//	}
 
 	public int getAmount() {
 		return amount;

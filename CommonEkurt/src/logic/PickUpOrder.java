@@ -9,6 +9,12 @@ import enums.SupplyMethodEnum;
 
 public class PickUpOrder {
 	
+	@Override
+	public String toString() {
+		return "PickUpOrder [client=" + client + ", machineName=" + machineName + ", date=" + date + ", products="
+				+ products + ", status=" + status + "]";
+	}
+
 	public PickUpOrder(User client, String machineName, LocalDate date,
 						ArrayList<Product> products, OrderStatusEnum status) {
 		this.client = client;
@@ -25,7 +31,12 @@ public class PickUpOrder {
 	private LocalDate date;
 	private ArrayList<Product> products;
 	private OrderStatusEnum status;
+	private float totalToPay = 0;
 	
+	public float getTotalToPay() {
+		return totalToPay;
+	}
+
 	public User getClient() {
 		return client;
 	}
@@ -57,5 +68,21 @@ public class PickUpOrder {
 	public void setStatus(OrderStatusEnum status) {
 		this.status = status;
 	}
-
+	
+	public void addProduct(Product product) {
+		int flag = 0;
+		for (Product index : products) {
+			if (index.getName().equals(product.getName())) {
+				index.setAmount(index.getAmount() + product.getAmount());
+				totalToPay += (product.getPrice() * product.getAmount());
+				flag = 1;
+			}
+		}
+		if (flag == 0) {
+			products.add(product);
+			totalToPay += (product.getPrice() * product.getAmount());
+		}
+	}
+	
+	
 }
