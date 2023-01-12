@@ -1,35 +1,28 @@
 package dataBase;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
 import common.Response;
 import common.Transaction;
-import enums.RegionEnum;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import logic.*;
 
 public class UserQuaries {
-	
+
 	public static void registerUserToCustomerWithCreditCard(Transaction obj, Connection con) {
 		if (obj instanceof Transaction) {
+			@SuppressWarnings("unchecked")
 			List<String> inputQuery = (List<String>) obj.getData();
 			PreparedStatement pstmt;
 			try {
-				pstmt = con.prepareStatement("INSERT INTO paymentdetails (Id, CreditCardNum, CVV, ExpDate) "
-						+ "VALUES (?, ?, ?, ?);");
+				pstmt = con.prepareStatement(
+						"INSERT INTO paymentdetails (Id, CreditCardNum, CVV, ExpDate) " + "VALUES (?, ?, ?, ?);");
 				pstmt.setString(1, inputQuery.get(0));
 				pstmt.setString(2, inputQuery.get(1));
 				pstmt.setString(3, inputQuery.get(2));
-				pstmt.setString(4, inputQuery.get(3));				
+				pstmt.setString(4, inputQuery.get(3));
 				if (pstmt.executeUpdate() == 0) {
 					obj.setResponse(Response.REGISTER_USER_TO_CUSTOMER_UNSUCCESSFULLY);
 					return;
@@ -50,7 +43,7 @@ public class UserQuaries {
 		}
 
 	}
-	
+
 	public static void getCreditCardById(Transaction obj, Connection con) {
 		if (obj instanceof Transaction) {
 			String id = (String) obj.getData();
@@ -76,11 +69,11 @@ public class UserQuaries {
 		} else
 			obj.setResponse(Response.GET_CREDIT_CARD_BY_ID_UNSUCCESSFULLY);
 	}
-	
-	//To customer Queries
+
+	// To customer Queries
 	public static void subscriberRequest(Transaction obj, Connection con) {
 		if (obj instanceof Transaction) {
-			String userId = (String)obj.getData();
+			String userId = (String) obj.getData();
 			PreparedStatement pstmt;
 			try {
 				pstmt = con.prepareStatement("UPDATE users SET status= 'REQ_TO_SUB' WHERE id=?;");

@@ -4,28 +4,21 @@ import java.net.InetAddress;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import server.EchoServer;
 import server.ServerUI;
 
 public class ServerScreenController implements Initializable {
@@ -77,6 +70,7 @@ public class ServerScreenController implements Initializable {
 		primaryStage.setTitle("Ekurt Server");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		primaryStage.getIcons().add(new Image(ClassLoader.getSystemResourceAsStream("server_images/EKURT.png")));
 		primaryStage.setResizable(false);
 	}
 
@@ -92,17 +86,17 @@ public class ServerScreenController implements Initializable {
 			System.out.println("Enter a port number please.");
 
 		} else {
-		
+
 			if (ServerUI.runServer(p, data)) {
-				//IP
+				// IP
 				ServerManagerIp = new Label();
 				ServerManagerIp.setText(TxtIp.getText());
 				ConnectedUsers.add(ServerManagerIp, 0, 0);
-				//HOST
+				// HOST
 				ServerManagerHost = new Label();
 				ServerManagerHost.setText(hostName);
 				ConnectedUsers.add(ServerManagerHost, 1, 0);
-				//STATUS
+				// STATUS
 				ServerManagerStatus = new Label();
 				ServerManagerStatus.setText("Connected-server");
 				ConnectedUsers.add(ServerManagerStatus, 2, 0);
@@ -118,7 +112,7 @@ public class ServerScreenController implements Initializable {
 		ServerUI.stopServer();
 
 	}
-	
+
 	// To be continued - in the next phase
 	@FXML
 	void Import(ActionEvent event) {
@@ -139,12 +133,12 @@ public class ServerScreenController implements Initializable {
 		}
 		this.TxtDataBase.setText("jdbc:mysql://localhost/ekurt?serverTimezone=IST");
 		this.TxtUserName.setText("root");
-		//this.TxtPassword.setText("************");
+		// this.TxtPassword.setText("************");
 		this.TxtPassword.setText("Hanooko97!");
 		this.BTNImport.setDisable(true);
 		try {
 			hostName = InetAddress.getLocalHost().getHostName();
-			
+
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

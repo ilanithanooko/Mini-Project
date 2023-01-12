@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="362.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.CeoDashboardController">
+<AnchorPane prefHeight="362.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.CeoDashboardController">
    <children>
       <AnchorPane prefHeight="405.0" prefWidth="516.0" style="-fx-background-color: #EEF6FD;">
          <children>
@@ -21,7 +21,7 @@
                   <Image url="@../client_images/EKURT.png" />
                </image>
             </ImageView>
-            <Button layoutX="140.0" layoutY="209.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="236.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="View reports" textFill="WHITE">
+            <Button fx:id="viewReportsBtn" layoutX="140.0" layoutY="209.0" mnemonicParsing="false" onAction="#viewReports" prefHeight="44.0" prefWidth="236.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="View reports" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -31,7 +31,12 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="getSubscribersBtn" layoutX="140.0" layoutY="268.0" mnemonicParsing="false" onAction="#Get" prefHeight="44.0" prefWidth="236.0" style="-fx-background-color: #0E5772;" stylesheets="@../../../ServerEkurt/src/server_gui/ServerScreenDesign.css" text="Get Subscribers" textFill="WHITE">
+            <Button fx:id="getSubscribersBtn" layoutX="140.0" layoutY="320.0" mnemonicParsing="false" onAction="#Get" prefHeight="44.0" prefWidth="236.0" style="-fx-background-color: #0E5772;" stylesheets="@../../../ServerEkurt/src/server_gui/ServerScreenDesign.css" text="Get Subscribers" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="aprroveCustomersBtn" layoutX="140.0" layoutY="264.0" mnemonicParsing="false" onAction="#aprroveCustomers" prefHeight="44.0" prefWidth="236.0" style="-fx-background-color: #0E5772;" stylesheets="@../../../ServerEkurt/src/server_gui/ServerScreenDesign.css" text="Approve Customers" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

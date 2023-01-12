@@ -9,7 +9,8 @@ import javafx.scene.layout.VBox;
 import logic.*;
 
 /**
- * util class that enables you to perform methods on the current client (user of system) connected to the system
+ * util class that enables you to perform methods on the current client (user of
+ * system) connected to the system
  */
 public class ClientUtils {
     public static User currUser;
@@ -22,7 +23,4 @@ public class ClientUtils {
     public static boolean cartDisplayFlag;
     public static String configuration;
     public static String machine;
-
-    
-
 }

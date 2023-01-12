@@ -20,7 +20,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <TableView fx:id="table" layoutX="261.0" layoutY="28.0" prefHeight="459.0" prefWidth="798.0" style="-fx-background-color: #FFE3E2;">
+      <TableView fx:id="table" layoutX="261.0" layoutY="28.0" prefHeight="459.0" prefWidth="798.0" style="-fx-background-color: #FFE3E2;" stylesheets="@../client_css/table&amp;buttonDesign.css">
          <columns>
             <TableColumn fx:id="subNumColTbl" prefWidth="143.0" text="Subscriber Number" />
             <TableColumn fx:id="subIdColTbl" prefWidth="67.0" text="ID" />

@@ -3,47 +3,47 @@ package client;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import clientUtil.ClientUtils;
 import client_gui.ChooseMachinePickupController;
-import client_gui.ConnectToServerController;
-import client_gui.CustomerCategoriesController;
-import client_gui.FoodCategoryController;
 import client_gui.OrderConfirmationPickUpController;
-import client_gui.SubscriberCategoriesPageController;
-import client_gui.PromoteOffersFXController;
 import common.Transaction;
-import enums.RoleEnum;
-import javafx.application.Platform;
-import javafx.stage.Stage;
 import logic.*;
 
 public class ActionAnalyze {
 
+	/**
+	 * Analyzes a transaction and performs the appropriate action.
+	 *
+	 * @param msg The transaction to be analyzed.
+	 * @return A boolean indicating whether the action was successful.
+	 * @throws Exception If an error occurs while analyzing the transaction.
+	 */
 	public static boolean actionAnalyzeClient(Transaction msg) throws Exception {
 		ClientController.setObj(msg);
 		switch (msg.getResponse()) {
 		case FOUND_SUBSCRIBERS: {
-
+			// TODO: Add relevant action for found subscribers
+			break;
 		}
 		case DIDNT_FOUND_SUBSCRIBERS: {
-			// insert relevant method from the clientQuaries on the future
+			// TODO: Add relevant action for not found subscribers
+			break;
 		}
 		case UPDATE_SUBSCRIBERS_SUCCESS: {
-			// insert relevant method from the clientQuaries on the future
-
+			// TODO: Add relevant action for successful subscriber update
+			break;
 		}
 		case UPDATE_SUBSCRIBERS_FAILD: {
-			// insert relevant method from the clientQuaries on the future
+			// TODO: Add relevant action for failed subscriber update
+			break;
 		}
 		case FAILED: {
 			// insert relevant method from the clientQuaries on the future
+			// TODO: Add relevant action for failed transaction
 			break;
 		}
 		case ALREADY_LOGGED_IN: {
-
 			// insert relevant method from the clientQuaries on the future
-			//loginController.updateLoginStatusToAlreadyLoggedIn(msg);
 			break;
 		}
 		case LOGGED_IN_SUCCESS: {
@@ -55,9 +55,9 @@ public class ActionAnalyze {
 		}
 		case INCORRECT_VALUES: {
 			// insert relevant method from the clientQuaries on the future
-		//	loginController.updateLoginStatusToIncorrectVals(msg);
 			break;
 		}
+
 		case FOUND_MACHINE_NAMES: {
 			ChooseMachinePickupController.setMachineNames((List<String>)msg.getData());
 			break;

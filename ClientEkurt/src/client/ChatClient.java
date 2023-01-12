@@ -5,12 +5,7 @@
 package client;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import common.ChatIF;
-import common.Action;
-import common.Response;
 import common.Transaction;
 import ocsf.client.*;
 
@@ -56,16 +51,16 @@ public class ChatClient extends AbstractClient {
 	 * @param msg The message from the server.
 	 */
 	public void handleMessageFromServer(Object msg) {
-		awaitResponse=false;
-		if(msg instanceof Transaction) {
-		Transaction tr = (Transaction) msg;
-		try {
-			ActionAnalyze.actionAnalyzeClient(tr);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		clientUI.display(tr.getResponse().toString());
+		awaitResponse = false;
+		if (msg instanceof Transaction) {
+			Transaction tr = (Transaction) msg;
+			try {
+				ActionAnalyze.actionAnalyzeClient(tr);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			clientUI.display(tr.getResponse().toString());
 		}
 	}
 
@@ -76,11 +71,10 @@ public class ChatClient extends AbstractClient {
 	 */
 	public void handleMessageFromClientUI(Object message) {
 
-		try
-	    {
-	    	openConnection();//in order to send more than one message
-	       	awaitResponse = true;
-	    	sendToServer(message);
+		try {
+			openConnection();// in order to send more than one message
+			awaitResponse = true;
+			sendToServer(message);
 			// wait for response
 			while (awaitResponse) {
 				try {
@@ -89,13 +83,11 @@ public class ChatClient extends AbstractClient {
 					e.printStackTrace();
 				}
 			}
-	    }
-	    catch(IOException e)
-	    {
-	    	e.printStackTrace();
-	      clientUI.display("Could not send message to server: Terminating client."+ e);
-	      quit();
-	    }
+		} catch (IOException e) {
+			e.printStackTrace();
+			clientUI.display("Could not send message to server: Terminating client." + e);
+			quit();
+		}
 	}
 
 	/**

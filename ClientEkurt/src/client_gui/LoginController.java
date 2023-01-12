@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import Utils.Constants;
 import Utils.generalMethods;
 import clientUtil.ClientUtils;
@@ -26,8 +25,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import logic.LocalOrder;
 import logic.PickUpOrder;
+import logic.User;
+import clientUtil.ClientUtils;
 
+/**
+ * This class handles the Item methods to be sent and received from the server
+ * for the relevant controllers
+ */
 public class LoginController {
+
 
     @FXML
     private Button loginButton;
@@ -111,51 +117,73 @@ public class LoginController {
     		labelFlag = false;
     	}
     }
-    void openDashboardByRole(RoleEnum roleEnum) throws Exception {
-        switch (roleEnum) {
-	        case CEO:
-	        	CeoDashboardController CEODashboard = new CeoDashboardController();
-	            Platform.runLater(() -> {
-						CEODashboard.start(new Stage());
+
+	void openDashboardByRole(RoleEnum roleEnum) throws Exception {
+		switch (roleEnum) {
+
+		case CEO:
+			CeoDashboardController CEODashboard = new CeoDashboardController();
+			Platform.runLater(() -> {
+				CEODashboard.start(new Stage());
+			});
+			break;
+		case CUSTOMER:
+			if (ClientUtils.configuration.equals("ek")) {
+				ekConfiguration();
+				new CustomerCategoriesController().start(new Stage());
+			} else if (ClientUtils.configuration.equals("ol")) {
+				MainDashboradController CustomerODashboard = new MainDashboradController();
+				Platform.runLater(() -> {
+					CustomerODashboard.start(new Stage());
 				});
-	            break;
-	        case CUSTOMER:
-	        	if(ClientUtils.configuration.equals("ek")) {
-        			ekConfiguration();
-        			new CustomerCategoriesController().start(new Stage());
-        	}else if (ClientUtils.configuration.equals("ol")) {
-	        	MainDashboradController CustomerODashboard = new MainDashboradController();
-	            Platform.runLater(() -> {
-	            	CustomerODashboard.start(new Stage());
+			}
+			break;
+		case SUBSCRIBER:
+			if (ClientUtils.configuration.equals("ek")) {
+				ekConfiguration();
+				new SubscriberCategoriesPageController().start(new Stage());
+			} else if (ClientUtils.configuration.equals("ol")) {
+				MainDashboradController subDashboard = new MainDashboradController();
+				Platform.runLater(() -> {
+					subDashboard.start(new Stage());
 				});
-        	}
-	            break;
-	        case SUBSCRIBER:
-	        	if(ClientUtils.configuration.equals("ek")) {
-	        			ekConfiguration();
-	        			new SubscriberCategoriesPageController().start(new Stage());
-	        	}else if (ClientUtils.configuration.equals("ol")) {
-		        	MainDashboradController subDashboard = new MainDashboradController();
-		            Platform.runLater(() -> {
-		            	subDashboard.start(new Stage());
-					});
-	        	}
-	            break;
-	        case MARKETING_WORKER:
-	        	MarketingWorkerDashboardFXController MWDashboard = new MarketingWorkerDashboardFXController();
-	            Platform.runLater(() -> {
-						MWDashboard.start(new Stage());
-				});
-	            break;  
-	        case DELIVERY_OPERATOR:
-	        	DeliveryOperatorDashboardController DODashboard = new DeliveryOperatorDashboardController();
-	            Platform.runLater(() -> {
-						DODashboard.start(new Stage());
-				});
-	            break;
-        }
-    }
-    
+			}
+			break;
+		case MARKETING_WORKER:
+			MarketingWorkerDashboardFXController MWDashboard = new MarketingWorkerDashboardFXController();
+			Platform.runLater(() -> {
+				MWDashboard.start(new Stage());
+			});
+			break;
+		case DELIVERY_OPERATOR:
+			DeliveryOperatorDashboardController DODashboard = new DeliveryOperatorDashboardController();
+			Platform.runLater(() -> {
+				DODashboard.start(new Stage());
+			});
+			break;
+		case USER:
+			UserDashboardController userDashboard = new UserDashboardController();
+			Platform.runLater(() -> {
+				userDashboard.start(new Stage());
+			});
+			break;
+		case REGION_MANAGER:
+			CeoDashboardController regionManagerDashboard = new CeoDashboardController();
+			Platform.runLater(() -> {
+				regionManagerDashboard.start(new Stage());
+			});
+			break;
+		case SERVICE_WORKER:
+			ServiceWorkerDashboardController ServiceWorkerDashboard = new ServiceWorkerDashboardController();
+			Platform.runLater(() -> {
+				ServiceWorkerDashboard.start(new Stage());
+			});
+			break;
+		default:
+			break;
+		}
+	}
+
     void ekConfiguration() {
 		ClientUtils.localOrderInProcess = new LocalOrder(ClientUtils.currUser, ClientUtils.machine,
 				LocalDateTime.now(), new ArrayList<>(), OrderStatusEnum.IN_PROCESS);

@@ -46,7 +46,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="subIdTxt" layoutX="142.0" layoutY="23.0" />
+            <TextField fx:id="subIdTxt" editable="false" layoutX="142.0" layoutY="23.0" promptText="ID" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" layoutX="169.0" layoutY="50.0" prefHeight="34.0" prefWidth="218.0" text="Edit Subscriber" textAlignment="CENTER" textFill="#0e5772">

@@ -2,7 +2,7 @@ package common;
 import logic.*;
 import java.io.Serializable;
 
-public class Transaction implements Serializable{
+public class Transaction implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Action action;
 	private Response response;
@@ -18,12 +18,12 @@ public class Transaction implements Serializable{
 		this.response = response;
 		this.data = information;
 	}
-	 public Transaction(Action action, Object data) {
-	        this.action = action;
-	        this.response = Response.WAIT_RESPONSE;
-	        this.data = data;
-	        //this.isSendToAll = false; ??????
-	    }
+
+	public Transaction(Action action, Object data) {
+		this.action = action;
+		this.response = Response.WAIT_RESPONSE;
+		this.data = data;
+	}
 
 	public Action getAction() {
 		return action;
@@ -48,8 +48,9 @@ public class Transaction implements Serializable{
 	public void setData(Object information) {
 		this.data = information;
 	}
+
 	@Override
 	public String toString() {
-		return "Client action : " +getAction()+"  "+ "The action status : "+getResponse();
+		return "Client action : " + getAction() + "  " + "The action status : " + getResponse();
 	}
 }

@@ -1,28 +1,41 @@
 package client_gui;
 
-import java.io.IOException;
-
+import java.net.URL;
+import java.util.ResourceBundle;
 import Utils.generalMethods;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import clientUtil.ClientUtils;
+import clientUtil.*;
+import enums.*;
 
-public class CeoDashboardController {
+public class CeoDashboardController implements Initializable {
 
 	@FXML
 	private Button getSubscribersBtn;
 	@FXML
 	private Button LogoutBtn;
+	@FXML
+	private Button viewReportsBtn;
+	@FXML
+	private Button showReportBtn;
+	@FXML
+	private Button aprroveCustomersBtn;
 
 	public void start(Stage primaryStage) {
-		generalMethods.displayScreen(primaryStage, getClass(), "/client_fxml/CeoDashboard.fxml", "Ekurt Manager's Menu");
+		generalMethods.displayScreen(primaryStage, getClass(), "/client_fxml/CeoDashboard.fxml",
+				"Ekurt Manager's Menu");
+	}
+
+	@FXML
+	void viewReports(ActionEvent event) throws Exception {
+		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
+		Stage primaryStage = new Stage();
+		ManagerReportsFxmlController getPage = new ManagerReportsFxmlController();
+		getPage.start(primaryStage);
 	}
 
 	@FXML
@@ -32,7 +45,15 @@ public class CeoDashboardController {
 		GetSubscriberController getPage = new GetSubscriberController();
 		getPage.start(primaryStage);
 	}
-	
+
+	@FXML
+	void aprroveCustomers(ActionEvent event) throws Exception {
+		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
+		Stage primaryStage = new Stage();
+		CustomerApprovingController page = new CustomerApprovingController();
+		page.start(primaryStage);
+	}
+
 	@FXML
 	void logout(ActionEvent event) throws Exception {
 		LoginController.logout(ClientUtils.currUser.getUsername());
@@ -40,5 +61,12 @@ public class CeoDashboardController {
 		new LoginController().start(new Stage());
 
 	}
-	
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		if (ClientUtils.currUser.getRegion() != RegionEnum.WORLDWIDE) {
+			getSubscribersBtn.setVisible(false);
+		}
+	}
+
 }

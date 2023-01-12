@@ -1,6 +1,5 @@
 package client_gui;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,31 +9,15 @@ import common.Response;
 import common.Transaction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import Utils.generalMethods;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
-import javafx.scene.control.cell.PropertyValueFactory;
-
-import logic.Subscriber;
-
-public class UpdateSubscriberController{
+public class UpdateSubscriberController {
 
 	@FXML
 	private Button updateBtn;
@@ -46,13 +29,12 @@ public class UpdateSubscriberController{
 	private TextField subIdTxt = new TextField();
 	@FXML
 	private Label statusLbl;
-	private String chosenIdToUpdate;
-	private generalMethods gm = new generalMethods();
-	
-	public void start(Stage primaryStage) throws Exception {
-		gm.displayScreen(primaryStage, getClass(), "/client_fxml/UpdateSubscriber.fxml", "Ekrut Update Subscriber");
-		subIdTxt.setText(chosenIdToUpdate);
-		subIdTxt.setDisable(true);
+
+	public void start(Stage primaryStage, String id) throws Exception {
+		subIdTxt.setPromptText(id);
+		generalMethods.displayScreen(primaryStage, getClass(), "/client_fxml/UpdateSubscriber.fxml",
+				"Ekrut Update Subscriber");
+
 	}
 
 	@FXML
@@ -75,13 +57,4 @@ public class UpdateSubscriberController{
 		}
 
 	}
-
-	public String getChosenIdToUpdate() {
-		return chosenIdToUpdate;
-	}
-
-	public void setChosenIdToUpdate(String chosenIdToUpdate) {
-		this.chosenIdToUpdate = chosenIdToUpdate;
-	}
-
 }
