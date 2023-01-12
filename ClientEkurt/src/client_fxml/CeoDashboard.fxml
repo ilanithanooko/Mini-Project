@@ -31,7 +31,12 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="getSubscribersBtn" layoutX="140.0" layoutY="268.0" mnemonicParsing="false" onAction="#Get" prefHeight="44.0" prefWidth="236.0" style="-fx-background-color: #0E5772;" stylesheets="@../../../ServerEkurt/src/server_gui/ServerScreenDesign.css" text="Get Subscribers" textFill="WHITE">
+            <Button fx:id="getSubscribersBtn" layoutX="140.0" layoutY="320.0" mnemonicParsing="false" onAction="#Get" prefHeight="44.0" prefWidth="236.0" style="-fx-background-color: #0E5772;" stylesheets="@../../../ServerEkurt/src/server_gui/ServerScreenDesign.css" text="Get Subscribers" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="aprroveCustomersBtn" layoutX="140.0" layoutY="264.0" mnemonicParsing="false" onAction="#aprroveCustomers" prefHeight="44.0" prefWidth="236.0" style="-fx-background-color: #0E5772;" stylesheets="@../../../ServerEkurt/src/server_gui/ServerScreenDesign.css" text="Approve Customers" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

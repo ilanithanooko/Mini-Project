@@ -37,7 +37,12 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="loginBtn12" layoutX="153.0" layoutY="274.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="210.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Manage Deliveries" textFill="WHITE">
+            <Button fx:id="loginBtn12" layoutX="258.0" layoutY="281.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="210.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Manage Deliveries" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="registerSubscriberBtn" layoutX="18.0" layoutY="281.0" mnemonicParsing="false" onAction="#registerSubscriber" prefHeight="43.0" prefWidth="218.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Register Subscriber" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

@@ -8,54 +8,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="669.0" style="-fx-background-color: #EEF6FD;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.ManagerReportsFxmlController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="357.0" prefWidth="589.0" style="-fx-background-color: #EEF6FD;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.ManagerReportsFxmlController">
       <ImageView fitHeight="229.0" fitWidth="163.0" layoutX="40.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../client_images/EKURT.png" />
          </image>
       </ImageView>
-      <Button fx:id="backBtn" layoutX="40.0" layoutY="275.0" mnemonicParsing="false" onAction="#Back" prefHeight="35.0" prefWidth="163.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="27.0" layoutY="268.0" mnemonicParsing="false" onAction="#Back" prefHeight="35.0" prefWidth="163.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-   <Label layoutX="278.0" layoutY="69.0" text="View Reports" textFill="#0e5772">
+   <Label layoutX="223.0" layoutY="33.0" text="View Reports" textFill="#0e5772">
       <font>
          <Font name="System Bold" size="36.0" />
       </font>
    </Label>
-   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="258.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../client_images/icons8-calendar-48.png" />
-      </image></ImageView>
-   <ComboBox fx:id="monthComboBox" layoutX="299.0" layoutY="276.0" promptText="Month" stylesheets="@../client_css/ComboBoxDesign.css" />
-   <ComboBox fx:id="yearComboBox" layoutX="493.0" layoutY="276.0" promptText="Year" stylesheets="@../client_css/ComboBoxDesign.css" />
-   <ComboBox fx:id="reportTypeComboBox" layoutX="493.0" layoutY="169.0" promptText="Report Type" stylesheets="@../client_css/ComboBoxDesign.css" />
-   <Button fx:id="showReportBtn" layoutX="387.0" layoutY="359.0" mnemonicParsing="false" onAction="#viewReport" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Show Report" textFill="WHITE">
+   <ComboBox fx:id="reportTypeComboBox" layoutX="314.0" layoutY="172.0" promptText="Report Type" stylesheets="@../client_css/ComboBoxDesign.css" />
+   <Button fx:id="showReportBtn" layoutX="289.0" layoutY="268.0" mnemonicParsing="false" onAction="#viewReport" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Show Report" textFill="WHITE">
       <font>
          <Font name="System Bold" size="14.0" />
       </font>
    </Button>
-   <ComboBox fx:id="machineComboBox" layoutX="299.0" layoutY="169.0" promptText=" Machine" stylesheets="@../client_css/ComboBoxDesign.css" />
-   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="258.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../client_images/icons8-vending-machine-48.png" />
-      </image>
-   </ImageView>
-   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="453.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="275.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../client_images/icons8-graph-report-48.png" />
       </image>
    </ImageView>
-   <ImageView fitHeight="120.0" fitWidth="132.0" layoutX="508.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="120.0" fitWidth="132.0" layoutX="447.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../client_images/imageedit_2_2018645905.png" />
       </image>
    </ImageView>
-   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="453.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../client_images/icons8-calendar-48.png" />
-      </image>
-   </ImageView>
-   <Label fx:id="errorLabel" layoutX="54.0" layoutY="334.0" text="errorLabel" textFill="RED" />
+   <Label fx:id="errorLabel" layoutX="40.0" layoutY="315.0" text="errorLabel" textFill="RED" />
 </AnchorPane>

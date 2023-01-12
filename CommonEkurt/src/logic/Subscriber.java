@@ -1,9 +1,8 @@
 package logic;
 
 public class Subscriber {
-	
-	private String subFirstname, subLastname, subId, subPhone,subEmail, subCreditcard, subNumber;
-	
+
+	private String subFirstname, subLastname, subId, subPhone, subEmail, subCreditcard, subNumber;
 
 	public Subscriber(String subFirstname, String subLastname, String subId, String subPhone, String subEmail,
 			String subCreditcard, String subNumber) {
@@ -71,7 +70,7 @@ public class Subscriber {
 	public void setSubNumber(String subNumber) {
 		this.subNumber = subNumber;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Subscriber [subFirstname=" + subFirstname + ", subLastname=" + subLastname + ", subId=" + subId
@@ -79,5 +78,4 @@ public class Subscriber {
 				+ ", subNumber=" + subNumber + "]";
 	}
 
-	
 }
