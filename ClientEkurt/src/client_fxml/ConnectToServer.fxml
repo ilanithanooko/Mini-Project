@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -11,36 +12,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="362.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.ConnectToServerController">
+<AnchorPane prefHeight="259.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.ConnectToServerController">
    <children>
-      <HBox prefHeight="362.0" prefWidth="570.0" style="-fx-background-color: #EEF6FD;">
+      <HBox prefHeight="285.0" prefWidth="794.0" style="-fx-background-color: #EEF6FD;">
          <children>
             <VBox prefHeight="414.0" prefWidth="300.0">
                <children>
-                  <AnchorPane prefHeight="343.0" prefWidth="345.0">
+                  <AnchorPane prefHeight="393.0" prefWidth="298.0">
                      <children>
-                        <Label fx:id="ConnectStatusLabel" layoutX="14.0" layoutY="250.0" prefHeight="49.0" prefWidth="273.0" text="Insert Wrong Details Will Close the Client Terminat" textFill="#f50101" />
-                        <TextField fx:id="IpTxt" layoutX="137.0" layoutY="68.0" promptText="localhost" text="localhost" />
-                        <TextField fx:id="PortTxt" layoutX="137.0" layoutY="109.0" promptText="5555" text="5555" />
-                        <Label layoutX="50.0" layoutY="291.0" prefHeight="17.0" prefWidth="199.0" text="without Moving to the next Screen" textFill="RED" />
-                        <Label layoutX="16.0" layoutY="67.0" prefHeight="27.0" prefWidth="135.0" text="Server Name:" textFill="#0e5772">
+                        <TextField fx:id="IpTxt" editable="false" layoutX="125.0" layoutY="103.0" promptText="localhost" text="localhost" />
+                        <TextField fx:id="PortTxt" editable="false" layoutX="125.0" layoutY="144.0" promptText="5555" text="5555" />
+                        <Label layoutX="22.0" layoutY="102.0" prefHeight="27.0" prefWidth="98.0" text="Server Name" textFill="#0e5772">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="27.0" layoutY="104.0" prefHeight="35.0" prefWidth="184.0" text="Server Port:" textFill="#0e5772">
+                        <Label layoutX="34.0" layoutY="139.0" prefHeight="35.0" prefWidth="90.0" text="Server Port" textFill="#0e5772">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Button fx:id="ConfirmDetails" layoutX="76.0" layoutY="184.0" mnemonicParsing="false" onAction="#ConfirmClick" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Connect" textFill="WHITE">
+                        <Button fx:id="ConfirmDetails" layoutX="78.0" layoutY="202.0" mnemonicParsing="false" onAction="#ConfirmClick" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Connect" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Label alignment="CENTER" layoutX="28.0" layoutY="21.0" prefHeight="34.0" prefWidth="218.0" text="Connect To Server" textAlignment="CENTER" textFill="#0e5772">
+                        <Label alignment="CENTER" layoutX="39.0" layoutY="38.0" prefHeight="34.0" prefWidth="218.0" text="Connect To Server" textAlignment="CENTER" textFill="#0e5772">
                            <font>
-                              <Font name="Calibri Bold" size="20.0" />
+                              <Font name="Calibri Bold" size="28.0" />
                            </font>
                         </Label>
                      </children>
@@ -49,13 +48,37 @@
             </VBox>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="301.0" fitWidth="203.0" layoutX="37.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="233.0" fitWidth="153.0" layoutX="22.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../client_images/EKURT.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
+            <VBox prefHeight="362.0" prefWidth="301.0">
+               <children>
+                  <Pane prefHeight="307.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="38.0" layoutY="38.0" prefHeight="35.0" prefWidth="225.0" text="Touch Simulation" textAlignment="CENTER" textFill="#0e5772">
+                           <font>
+                              <Font name="Calibri Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <ComboBox layoutX="55.0" layoutY="111.0" prefHeight="30.0" prefWidth="191.0" promptText="Choose Id..." stylesheets="@../client_css/ComboBoxDesign.css" />
+                        <Label layoutX="55.0" layoutY="156.0" prefHeight="50.0" prefWidth="191.0" text="subscribers enjoy the benefit of quick and easy login " textAlignment="CENTER" textFill="#0e5772" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="75.0" layoutY="205.0" prefHeight="40.0" prefWidth="150.0" text="Not a subscriber? Consider joining us!" textAlignment="CENTER" textFill="#ea6161" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
          </children>
       </HBox>
    </children>

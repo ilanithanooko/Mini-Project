@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Utils.generalMethods;
+import clientUtil.ClientUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,14 +24,10 @@ public class SweetsCategoryController implements Initializable {
     private ImageView backBtn;
 
     @FXML
-    private Button cancelBtn;
-
-    @FXML
     private Button checkoutBtn;
 
     @FXML
     private GridPane gridPane;
-
     @FXML
     private ImageView viewCartBtn;
     
@@ -42,22 +39,24 @@ public class SweetsCategoryController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		int columns = 0;
 		int row = 1;
+		
 		try {
-			for(int i=0 ; i<SubscriberCategoriesPageController.sweetsCategoryProducts.size();i++) {
+			if(ClientUtils.localOrderInProcess != null) {
+			for(int i=0 ; i<ClientUtils.localOrderInProcess.getSweetsCategoryProducts().size();i++) {
 				VBox box;
-				if(SubscriberCategoriesPageController.sweetsCategoryProducts.get(i).isAvailable()) {
+				if(ClientUtils.localOrderInProcess.getSweetsCategoryProducts().get(i).getStockFromDb() > 0) {
 					FXMLLoader fxmlLoader = new FXMLLoader();
 					fxmlLoader.setLocation(getClass().getResource("/client_fxml/ProductInGrid.fxml"));
 					box = fxmlLoader.load();
 					ProductInGridController productInGridController = fxmlLoader.getController();
-					productInGridController.setData(SubscriberCategoriesPageController.sweetsCategoryProducts.get(i));
+					productInGridController.setData(ClientUtils.localOrderInProcess.getSweetsCategoryProducts().get(i));
 				}
 				else {
 					FXMLLoader fxmlLoader = new FXMLLoader();
 					fxmlLoader.setLocation(getClass().getResource("/client_fxml/ProductNotInStock.fxml"));
 					box = fxmlLoader.load();
 					ProductInGridController productInGridController = fxmlLoader.getController();
-					productInGridController.setData(SubscriberCategoriesPageController.sweetsCategoryProducts.get(i));
+					productInGridController.setData(ClientUtils.localOrderInProcess.getSweetsCategoryProducts().get(i));
 				}
 				if(columns == 4) {
 					columns = 0;
@@ -65,6 +64,58 @@ public class SweetsCategoryController implements Initializable {
 				}
 				gridPane.add(box, columns++, row);
 				gridPane.setMargin(box, new Insets(8));
+				ClientUtils.categoryProducts.add(box);
+			}
+			}else if(ClientUtils.pickupOrderInProcess != null) {
+			for(int i=0 ; i<ClientUtils.pickupOrderInProcess.getSweetsCategoryProducts().size();i++) {
+				VBox box;
+				if(ClientUtils.pickupOrderInProcess.getSweetsCategoryProducts().get(i).getStockFromDb() > 0) {
+					FXMLLoader fxmlLoader = new FXMLLoader();
+					fxmlLoader.setLocation(getClass().getResource("/client_fxml/ProductInGrid.fxml"));
+					box = fxmlLoader.load();
+					ProductInGridController productInGridController = fxmlLoader.getController();
+					productInGridController.setData(ClientUtils.pickupOrderInProcess.getSweetsCategoryProducts().get(i));
+				}
+				else {
+					FXMLLoader fxmlLoader = new FXMLLoader();
+					fxmlLoader.setLocation(getClass().getResource("/client_fxml/ProductNotInStock.fxml"));
+					box = fxmlLoader.load();
+					ProductInGridController productInGridController = fxmlLoader.getController();
+					productInGridController.setData(ClientUtils.pickupOrderInProcess.getSweetsCategoryProducts().get(i));
+				}
+				if(columns == 4) {
+					columns = 0;
+					++row;
+				}
+				gridPane.add(box, columns++, row);
+				gridPane.setMargin(box, new Insets(8));
+				ClientUtils.categoryProducts.add(box);
+			}
+			}else {
+				for(int i=0 ; i<ClientUtils.deliveryOrderInProcess.getSweetsCategoryProducts().size();i++) {
+					VBox box;
+					if(ClientUtils.deliveryOrderInProcess.getSweetsCategoryProducts().get(i).getStockFromDb() > 0) {
+						FXMLLoader fxmlLoader = new FXMLLoader();
+						fxmlLoader.setLocation(getClass().getResource("/client_fxml/ProductInGrid.fxml"));
+						box = fxmlLoader.load();
+						ProductInGridController productInGridController = fxmlLoader.getController();
+						productInGridController.setData(ClientUtils.deliveryOrderInProcess.getSweetsCategoryProducts().get(i));
+					}
+					else {
+						FXMLLoader fxmlLoader = new FXMLLoader();
+						fxmlLoader.setLocation(getClass().getResource("/client_fxml/ProductNotInStock.fxml"));
+						box = fxmlLoader.load();
+						ProductInGridController productInGridController = fxmlLoader.getController();
+						productInGridController.setData(ClientUtils.deliveryOrderInProcess.getSweetsCategoryProducts().get(i));
+					}
+					if(columns == 4) {
+						columns = 0;
+						++row;
+					}
+					gridPane.add(box, columns++, row);
+					gridPane.setMargin(box, new Insets(8));
+					ClientUtils.categoryProducts.add(box);
+			}
 			}
 			
 		}catch (Exception e) {
@@ -74,28 +125,28 @@ public class SweetsCategoryController implements Initializable {
 	
     @FXML
     void clickOnBackButton(MouseEvent event) {
-    	//don't forget to add case for customer
     	((Node) event.getSource()).getScene().getWindow().hide();
-    	new SubscriberCategoriesPageController().start(new Stage());
-    }
-
-    @FXML
-    void clickOnCancel(ActionEvent event) {
-
+    	switch (ClientUtils.currUser.getRole()) {
+		case CUSTOMER: {
+	    	new CustomerCategoriesController().start(new Stage());
+			break;
+		}
+		case SUBSCRIBER: {
+			new SubscriberCategoriesPageController().start(new Stage());
+			break;
+		}
+    	}	
     }
 
     @FXML
     void clickOnCheckout(ActionEvent event) {
-
+    	ClientUtils.cartFlag = false;
+    	new CartPageController().start(new Stage());
     }
 
     @FXML
     void clickOnViewCart(MouseEvent event) {
-
-    }
-    
-    @FXML
-    void addProductToCart(ActionEvent event) {
-
+    	ClientUtils.cartFlag = true;
+    	new CartPageController().start(new Stage());
     }
 }
