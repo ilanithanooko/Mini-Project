@@ -39,9 +39,7 @@ public class DeliveryOperatorDashboardController {
 	void logout(ActionEvent event) throws Exception {
 		LoginController.logout(ClientUtils.currUser.getUsername());
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
-		Stage primaryStage = new Stage();
-		LoginFXController getPage = new LoginFXController();
-		getPage.start(primaryStage);
+		new LoginController().start(new Stage());
 	}
 	
 }

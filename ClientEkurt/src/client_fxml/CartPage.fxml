@@ -55,12 +55,12 @@
    <bottom>
       <Pane prefHeight="148.0" prefWidth="348.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="confirmBtn" layoutX="209.0" layoutY="82.0" mnemonicParsing="false" onAction="#clickOnConfirm" prefHeight="44.0" prefWidth="141.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Confirm" textFill="WHITE">
+            <Button fx:id="confirmBtn" layoutX="213.0" layoutY="82.0" mnemonicParsing="false" onAction="#clickOnConfirm" prefHeight="44.0" prefWidth="141.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Confirm" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="cancelBtn" layoutX="37.0" layoutY="82.0" mnemonicParsing="false" onAction="#clickOnCancel" prefHeight="44.0" prefWidth="107.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Cancel" textFill="WHITE">
+            <Button fx:id="clearBtn" alignment="CENTER" layoutX="33.0" layoutY="82.0" mnemonicParsing="false" onAction="#clickOnClearBtn" prefHeight="44.0" prefWidth="142.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Clear Cart" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

@@ -18,7 +18,6 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [username=" + username + "]";
 	}
-
 	private int id;
     private String username;
     private String password;
