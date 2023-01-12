@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="981.0" style="-fx-background-color: #EEF6FD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.UpdateStockFXController">
+      <ImageView fitHeight="255.0" fitWidth="222.0" layoutX="30.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../client_images/EKURT.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="backBtn" layoutX="41.0" layoutY="312.0" mnemonicParsing="false" onAction="#Back" prefHeight="35.0" prefWidth="163.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   <TableView fx:id="productsTable" layoutX="239.0" layoutY="115.0" prefHeight="395.0" prefWidth="535.0" stylesheets="@../client_css/table&amp;buttonDesign.css">
+     <columns>
+       <TableColumn fx:id="productIdCol" prefWidth="99.0" text="Product ID" />
+         <TableColumn fx:id="productNameCol" prefWidth="111.0" text="Product Name" />
+         <TableColumn fx:id="LimitCol" prefWidth="93.0" text="Quantity Limit" />
+         <TableColumn fx:id="quantityStatusCol" prefWidth="113.0" text="Quantity Status" />
+         <TableColumn fx:id="quantityCol" prefWidth="118.0" text="Quantity" />
+     </columns>
+   </TableView>
+   <Label alignment="CENTER" layoutX="279.0" layoutY="26.0" prefHeight="62.0" prefWidth="423.0" text="Update Stock" textAlignment="CENTER" textFill="#0e5772">
+      <font>
+         <Font name="Calibri Bold" size="30.0" />
+      </font>
+   </Label>
+   <Label layoutX="232.0" layoutY="85.0" text="Products" textFill="#0e5772">
+      <font>
+         <Font size="18.0" />
+  
+      </font>
+   </Label>
+   <ComboBox fx:id="machineComboBox" layoutX="795.0" layoutY="170.0" prefWidth="150.0" promptText="Machine" stylesheets="@../client_css/ComboBoxDesign.css" />
+   <Button fx:id="showRequestsBtn" layoutX="795.0" layoutY="231.0" mnemonicParsing="false" onAction="#ShowRequests" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Show Requests" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+   </Button>
+   <Label fx:id="errorLabel" layoutX="41.0" layoutY="367.0" text="errorLabel" textFill="RED" />
+   <Button fx:id="UpdateProductQuantityBtn" layoutX="789.0" layoutY="350.0" mnemonicParsing="false" onAction="#UpdateQuantity" prefHeight="35.0" prefWidth="163.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Update Quantity" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+   </Button>
+   <Label layoutX="795.0" layoutY="299.0" text="Set:" textFill="#0e5772">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+   </Label>
+   <TextField fx:id="QuantityTxt" alignment="CENTER" layoutX="834.0" layoutY="300.0" prefHeight="25.0" prefWidth="121.0" promptText="Quantity" />
+   <ImageView fitHeight="69.0" fitWidth="77.0" layoutX="593.0" layoutY="23.0">
+      <image>
+         <Image url="@../../../../Downloads/delivery-cart%20(1).png" />
+      </image>
+   </ImageView>
+</AnchorPane>

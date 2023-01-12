@@ -140,7 +140,7 @@ public class ServerScreenController implements Initializable {
 		this.TxtDataBase.setText("jdbc:mysql://localhost/ekurt?serverTimezone=IST");
 		this.TxtUserName.setText("root");
 		//this.TxtPassword.setText("************");
-		this.TxtPassword.setText("Hanooko97!");
+		this.TxtPassword.setText("aA123456");
 		this.BTNImport.setDisable(true);
 		try {
 			hostName = InetAddress.getLocalHost().getHostName();

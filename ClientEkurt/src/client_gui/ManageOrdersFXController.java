@@ -14,6 +14,7 @@ import clientUtil.ClientUtils;
 import common.Action;
 import common.Response;
 import common.Transaction;
+import enums.OrderStatusEnum;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,6 +40,7 @@ import logic.Subscriber;
 
 public class ManageOrdersFXController implements Initializable {
 	
+	private static final OrderStatusEnum WAIT_APPROVAL = null;
 	@FXML
 	private Button backBtn;
 	@FXML
@@ -58,16 +60,21 @@ public class ManageOrdersFXController implements Initializable {
 	@FXML
 	private TableColumn<DeliveryOrder, Date> SupplyDateColTbl;
 	@FXML
-	private TableColumn<DeliveryOrder, Float> StatusColTbl;
+	private TableColumn<DeliveryOrder, Enum> StatusColTbl;
 	@FXML
-	private Label errorLabel;
+	private Label noOrdersErrorLabel;
+	@FXML
+	private Label NoSelectedOrderErrorLabel;
+	@FXML
+	private Label FailUpdateStatusLabel;
+	
 	private ObservableList<DeliveryOrder> listView = FXCollections.observableArrayList();
 	private generalMethods gm = new generalMethods();
 	private DeliveryOrder selectedOrder;
 	
 	@SuppressWarnings("static-access")
 	public void start(Stage primaryStage) throws Exception {
-		gm.displayScreen(primaryStage, getClass(), "/client_fxml/ManageOrdersPage.fxml", "Promote Offers Page");
+		gm.displayScreen(primaryStage, getClass(), "/client_fxml/ManageOrdersPage.fxml", "Manage Orders Page");
 	}
 
 	@Override
@@ -77,8 +84,10 @@ public class ManageOrdersFXController implements Initializable {
 		ClientIDColTbl.setCellValueFactory(new PropertyValueFactory<DeliveryOrder, String>("ClientId"));
 		OrderDateColTbl.setCellValueFactory(new PropertyValueFactory<DeliveryOrder, Date>("OrderDate"));
 		SupplyDateColTbl.setCellValueFactory(new PropertyValueFactory<DeliveryOrder, Date>("SuppDate"));
-		StatusColTbl.setCellValueFactory(new PropertyValueFactory<DeliveryOrder, Float>("Price"));
-		errorLabel.setVisible(false);
+		StatusColTbl.setCellValueFactory(new PropertyValueFactory<DeliveryOrder, Enum>("status"));
+		noOrdersErrorLabel.setVisible(false);
+		NoSelectedOrderErrorLabel.setVisible(false);
+		FailUpdateStatusLabel.setVisible(false);
 		table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	    // Update the selectedOffer variable with the new selected Offer object
 	    selectedOrder = newValue;
@@ -100,10 +109,11 @@ public class ManageOrdersFXController implements Initializable {
 		msg = ClientUI.chat.getObj();
 		if(msg.getResponse()==Response.FAILED_TO_GET_ORDERS) {
 			listView.clear();
-			errorLabel.setVisible(true);
+			noOrdersErrorLabel.setText("There are currently no orders for this region");
+			noOrdersErrorLabel.setVisible(true);
 		}else {
 		listView.clear();
-		errorLabel.setVisible(false);
+		noOrdersErrorLabel.setVisible(false);
 		@SuppressWarnings("unchecked")
 		List<DeliveryOrder> Alist = (List<DeliveryOrder>) msg.getData();
 		for (DeliveryOrder order : Alist) {
@@ -112,11 +122,50 @@ public class ManageOrdersFXController implements Initializable {
 			listView.forEach(Offer -> System.out.println(Offer));
 			table.setEditable(true);
 			table.setItems(listView);
+			ApproveOrderBtn.setDisable(false);
+			CompleteOrderBtn.setDisable(false);
 		}
 	}
 	@FXML
-	void PromoteOffers(ActionEvent event) throws Exception {
-		System.out.println("hi");
+	void ApproveOrders(ActionEvent event) throws Exception {
+		if(selectedOrder==null) {
+			NoSelectedOrderErrorLabel.setVisible(true);
+			return;
+		}
+		else NoSelectedOrderErrorLabel.setVisible(false);
+		FailUpdateStatusLabel.setVisible(false);
+		Transaction msg;
 		System.out.println(selectedOrder);
+		msg = new Transaction(Action.APPROVE_ORDER,selectedOrder);
+		ClientUI.chat.accept(msg);
+		msg = ClientUI.chat.getObj();
+		if(msg.getResponse()==Response.FAILED_TO_APPROVE_ORDER) {
+			FailUpdateStatusLabel.setVisible(true);
+			return;
+		}
+		listView.get(listView.indexOf(selectedOrder)).setStatus(OrderStatusEnum.ON_THE_WAY);
+		table.refresh();
+		selectedOrder=null;
+	}
+	@FXML
+	void CompleteOrder(ActionEvent event) throws Exception {
+		if(selectedOrder==null) {
+			NoSelectedOrderErrorLabel.setVisible(true);
+			return;
+		}
+		else NoSelectedOrderErrorLabel.setVisible(false);
+		FailUpdateStatusLabel.setVisible(false);
+		Transaction msg;
+		System.out.println(selectedOrder);
+		msg = new Transaction(Action.COMPLETE_ORDER,selectedOrder);
+		ClientUI.chat.accept(msg);
+		msg = ClientUI.chat.getObj();
+		if(msg.getResponse()==Response.FAILED_TO_COMPLETE_ORDER) {
+			FailUpdateStatusLabel.setVisible(true);
+			return;
+		}
+		listView.get(listView.indexOf(selectedOrder)).setStatus(OrderStatusEnum.COMPLETE);
+		table.refresh();
+		selectedOrder=null;
 	}
 }

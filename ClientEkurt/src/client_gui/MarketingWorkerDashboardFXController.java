@@ -38,6 +38,8 @@ public class MarketingWorkerDashboardFXController {
 	void logout(ActionEvent event) throws Exception {
 		LoginController.logout(ClientUtils.currUser.getUsername());
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
-		new LoginController().start(new Stage());
+		Stage primaryStage = new Stage();
+		LoginFXController getPage = new LoginFXController();
+		getPage.start(primaryStage);
 	}
 }

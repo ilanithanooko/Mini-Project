@@ -7,34 +7,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="302.0" prefWidth="490.0" style="-fx-background-color: #EEF6FD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.WalletConfirmController">
+<AnchorPane prefHeight="303.0" prefWidth="530.0" style="-fx-background-color: #EEF6FD;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.ConnectToServerController">
    <children>
-      <Label alignment="CENTER" layoutX="145.0" layoutY="151.0" prefHeight="35.0" prefWidth="98.0" text="Adding" textAlignment="CENTER" textFill="#0e5772">
+      <Label alignment="CENTER" layoutX="155.0" layoutY="152.0" prefHeight="35.0" prefWidth="98.0" text="Adding" textAlignment="CENTER" textFill="#0e5772">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <ImageView fitHeight="115.0" fitWidth="85.0" layoutX="203.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="115.0" fitWidth="85.0" layoutX="223.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../client_images/EKURT.png" />
          </image>
       </ImageView>
-      <Button fx:id="placeOrderBtn" layoutX="274.0" layoutY="236.0" mnemonicParsing="false" onAction="#clickOnPlaceOrder" prefHeight="44.0" prefWidth="148.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Place Order" textFill="WHITE">
+      <Button fx:id="loginBtn12" layoutX="307.0" layoutY="239.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="123.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Confirm" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="backBtn" layoutX="71.0" layoutY="236.0" mnemonicParsing="false" onAction="#clickOnBack" prefHeight="44.0" prefWidth="123.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Back" textFill="WHITE">
+      <Button fx:id="loginBtn121" layoutX="100.0" layoutY="239.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="123.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Cancel" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Label fx:id="totalPrice" layoutX="246.0" layoutY="151.0" prefHeight="35.0" prefWidth="98.0" textAlignment="CENTER" textFill="#0e5772">
+      <Label alignment="CENTER" layoutX="252.0" layoutY="152.0" prefHeight="35.0" prefWidth="130.0" text="totalPrice" textAlignment="CENTER" textFill="#0e5772">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="121.0" layoutY="184.0" prefHeight="35.0" prefWidth="248.0" text="to your wallet " textAlignment="CENTER" textFill="#0e5772">
+      <Label alignment="CENTER" layoutX="141.0" layoutY="188.0" prefHeight="35.0" prefWidth="248.0" text="to your wallet " textAlignment="CENTER" textFill="#0e5772">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>

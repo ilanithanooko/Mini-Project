@@ -23,7 +23,7 @@ public class OffersQuaries {
 			RegionEnum region = RegionEnum.valueOf(obj.toString());
 			try {
 				ResultSet rs = dbController.getInstance()
-						.executeQuery("SELECT id, name, price, discount,isActive FROM ekurt.offers WHERE region='" + region.toString() + "'");
+						.executeQuery("SELECT pro_code, name, price, discount,isActive FROM ekurt.offers WHERE region='" + region.toString() + "'");
 				System.out.println("Number of rows: " + rs.getRow());
 				if(!(rs.next())) {
 					msg.setResponse(Response.FAILED_TO_GET_OFFERS);
@@ -35,7 +35,7 @@ public class OffersQuaries {
 					    rs.previous();
 						List<Offer> offers = new ArrayList<>();
 						while (rs.next()) {
-						  String id = rs.getString("id");
+						  String id = rs.getString("pro_code");
 						  String name = rs.getString("name");
 						  String price = rs.getString("price");
 						  String discount = rs.getString("discount");
@@ -60,4 +60,50 @@ public class OffersQuaries {
 		} else
 			msg.setResponse(Response.FAILED_TO_GET_OFFERS);
 	}
+	
+	public static void PromoteOffer(Transaction msg) {
+		if (msg instanceof Transaction) {
+			Offer offer = (Offer) msg.getData();
+			RegionEnum region = RegionEnum.valueOf(offer.getRegion().toString());
+			try {
+				int rowsAffected = dbController.getInstance().executeUpdate(
+						"UPDATE productinmachine SET is_in_sale=1 WHERE machine_code=(SELECT machine_code FROM"
+						+ " machines WHERE region='"+region.toString()+"')"
+								+ " AND pro_code='"+offer.getProductID()+"'");
+				System.out.println("Number of rows: " + rowsAffected);
+				rowsAffected = dbController.getInstance().executeUpdate(
+		                "UPDATE offers SET isActive = '1' WHERE "
+		                + "id='"+offer.getProductID()+"' AND region ='"+region.toString()+"'");
+				System.out.println("Number of rows: " + rowsAffected);
+				msg.setResponse(Response.OFFER_PROMOTED_SUCCESSFULLY);
+			}
+			catch (Exception e){
+				e.printStackTrace();
+				msg.setResponse(Response.OFFER_PROMOTED_UNSUCCESSFULLY);
+			}
+		  }
+		}
+	public static void StopOffer(Transaction msg) {
+		if (msg instanceof Transaction) {
+			Offer offer = (Offer) msg.getData();
+			RegionEnum region = RegionEnum.valueOf(offer.getRegion().toString());
+			try {
+				int rowsAffected = dbController.getInstance().executeUpdate(
+						"UPDATE productinmachine SET is_in_sale=0 WHERE machine_code=(SELECT machine_code FROM"
+						+ " machines WHERE region='"+region.toString()+"')"
+								+ " AND pro_code='"+offer.getProductID()+"'");
+				System.out.println("Number of rows: " + rowsAffected);
+				rowsAffected = dbController.getInstance().executeUpdate(
+		                "UPDATE offers SET isActive = '0' WHERE "
+		                + "id='"+offer.getProductID()+"' AND region ='"+region.toString()+"'");
+				System.out.println("Number of rows: " + rowsAffected);
+				msg.setResponse(Response.OFFER_STOPPED_SUCCESSFULLY);
+			}
+			catch (Exception e){
+				e.printStackTrace();
+				msg.setResponse(Response.OFFER_PROMOTED_UNSUCCESSFULLY);
+			}
+		  }
+		}
+	
 }

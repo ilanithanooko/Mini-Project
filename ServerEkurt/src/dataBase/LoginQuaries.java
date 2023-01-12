@@ -3,9 +3,6 @@ package dataBase;
 
 import logic.User;
 import common.*;
-import enums.RegionEnum;
-import enums.RoleEnum;
-import enums.StatusEnum;
 import Utils.*;
 
 import java.sql.ResultSet;
@@ -20,30 +17,21 @@ public class LoginQuaries {
         HashMap<String, String> args = (HashMap<String, String>) msg.getData();
         String username = args.get("username");
         String password = args.get("password");
-        User currentUser = null;
+
         ResultSet rs = dbController.getInstance().executeQuery("SELECT * FROM ekurt.users where username='" + username + "' and password='" + password + "'");
 		if (rs == null)
 			msg.setResponse(Response.FAILED);
 		else {
-			try {
-				if (rs.next()) {
-					currentUser = new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"),
-							rs.getBoolean("is_logged_in"), rs.getString("firstname"), rs.getString("lastname"),
-							rs.getString("email"), rs.getString("telephone"), RoleEnum.valueOf(rs.getString("role")),
-							StatusEnum.valueOf(rs.getString("status")), RegionEnum.valueOf(rs.getString("region")));
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			if (currentUser == null) {
-				msg.setResponse(Response.INCORRECT_VALUES);
-			}else if(!currentUser.isLoggedIn()) {
+			User currentUser = generalMethods.getFirstElementFromList(User.createUserListFromResultSet(rs));
+			System.out.println("initial Status: " + currentUser.isLoggedIn());
+			if(!currentUser.isLoggedIn()) {
 				updateIsLoggedInColumn(username, password, 1);
 				currentUser.setLoggedIn(true);
 				msg.setData(currentUser);
 				msg.setResponse(Response.LOGGED_IN_SUCCESS);
 			} else if (currentUser.isLoggedIn()) {
 				msg.setResponse(Response.ALREADY_LOGGED_IN);
+				System.out.println("Already:" + currentUser.toString());
 			} else {
 				msg.setResponse(Response.INCORRECT_VALUES);
 			}
@@ -100,4 +88,23 @@ public class LoginQuaries {
         System.out.println("affected rows" + affectedRows);
         return (affectedRows == 1);
     }
+
+    /**
+     * Get account and credit card info (if exist)
+     * @param userID to retrieve his account info
+     * @return Account if exist, otherwise null
+     */
+    /*
+    private static Account getAccountInfoByUserID(int userID) {
+        String queryFetchAccountInfoByUserID = "SELECT id, balance, status, card_number, cvv, expiration_date \n" +
+                "FROM zerli.account\n" +
+                "JOIN creditcards ON creditcards.number=account.card_number\n" +
+                "AND account.user_id=" + userID;
+        ResultSet rs = DatabaseController.getInstance().executeQuery(queryFetchAccountInfoByUserID);
+        if (rs != null) {
+            return Functions.getFirstElementFromList(Account.createAccountListFromResultSet(rs));
+        }
+        return null;
+    }
+}*/
 }

@@ -1,6 +1,6 @@
 package enums;
 
 public enum SupplyMethodEnum {
-	PICKUP, DELIVERY, LOCAL;
+	PICKUP, DELIVERY;
 
 }

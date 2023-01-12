@@ -29,18 +29,14 @@ public class ProductInGrid implements Serializable {
 	private float price;
 	private CategoriesEnum category;
 	private String image;
-	private int stockFromDb;
-	private float price_after_discount;
-	private boolean is_in_sale;
-	private String offerName;
+	boolean available;
 	
-	public int getStockFromDb() {
-		return stockFromDb;
+	public boolean isAvailable() {
+		return available;
 	}
-	public void setStockFromDb(int stockFromDb) {
-		this.stockFromDb = stockFromDb;
+	public void setAvailable(boolean available) {
+		this.available = available;
 	}
-
 	public String getPro_code() {
 		return pro_code;
 	}
@@ -53,28 +49,8 @@ public class ProductInGrid implements Serializable {
 	public void setPro_name(String pro_name) {
 		this.pro_name = pro_name;
 	}
-	public void setPrice_after_discount(String name) {
-		float num=0;
-		float present=0;
-		if(name.contains("%")) {
-			num=Float.valueOf(offerName.replace("%",""));
-			present=(1-(num/100));
-			price_after_discount=price*present;
-		}
-	}
-	public float getPrice_after_discount() {
-        return price_after_discount;
-	}
-
 	public float getPrice() {
 		return price;
-	}
-	public String getOfferName() {
-		return offerName;
-	}
-
-	public void setOfferName(String offerName) {
-		this.offerName = offerName;
 	}
 	public void setPrice(float price) {
 		this.price = price;
@@ -92,17 +68,8 @@ public class ProductInGrid implements Serializable {
 		this.image = image;
 	}
 	
-    public boolean isIs_in_sale() {
-		return is_in_sale;
-	}
-	public void setIs_in_sale(boolean is_in_sale) {
-		this.is_in_sale = is_in_sale;
-	}
-
-	
-	public static ProductInGrid getProductFromResultSet(ResultSet rs, int stock, boolean is_in_sale, String offerName){
+    public static ProductInGrid getProductFromResultSet(ResultSet rs){
         //ProductInGrid> products = new ArrayList<>();
-	
         try{
             while(rs.next()){
             	ProductInGrid product = new ProductInGrid(rs.getString("pro_code"),
@@ -110,13 +77,7 @@ public class ProductInGrid implements Serializable {
                 						rs.getFloat("price"),
                 						CategoriesEnum.valueOf(rs.getString("category")),
                 						rs.getString("image"));
-            	product.setStockFromDb(stock);
-            	product.setIs_in_sale(is_in_sale);
-            	if(offerName != null) {
-                	product.setOfferName(offerName);
-                	product.setPrice_after_discount(offerName);
-            	}
-            	return product;
+                return product;
 
             	}
             } catch (SQLException e) {

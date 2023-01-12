@@ -13,6 +13,7 @@ import clientUtil.ClientUtils;
 import common.Action;
 import common.Response;
 import common.Transaction;
+import enums.OrderStatusEnum;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +26,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -33,6 +35,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import logic.Offer;
+import logic.ProductsInMachine;
 import logic.Subscriber;
 
 public class PromoteOffersFXController implements Initializable {
@@ -45,6 +48,8 @@ public class PromoteOffersFXController implements Initializable {
 	private Button getOffersBtn;
 	@FXML
 	private Button PromoteOfferBtn;
+	@FXML
+	private Button StopOffersBtn;
 	@FXML
 	private TableView<Offer> table = new TableView<Offer>(); //changed to static
 	@FXML
@@ -83,6 +88,7 @@ public class PromoteOffersFXController implements Initializable {
 	    // Update the selectedOffer variable with the new selected Offer object
 	    selectedOffer = newValue;
 		});
+		setColors();
 	}
 
 	@FXML
@@ -94,6 +100,7 @@ public class PromoteOffersFXController implements Initializable {
 	}
 	@FXML
 	void GetOffers(ActionEvent event) throws Exception {
+		errorLabel.setVisible(false);
 		Transaction msg;
 		//if(RegionComboBox.getValue() == null)
 			//errorLabel.setVisible(true);
@@ -114,12 +121,85 @@ public class PromoteOffersFXController implements Initializable {
 			listView.forEach(Offer -> System.out.println(Offer));
 			table.setEditable(true);
 			table.setItems(listView);
+			StopOffersBtn.setDisable(false);
+			PromoteOfferBtn.setDisable(false);
+
 		}
 	}
 	@FXML
 	void PromoteOffers(ActionEvent event) throws Exception {
-		//remeber check null;
-		System.out.println("hi");
-		System.out.println(selectedOffer);
+		errorLabel.setVisible(false);
+		Transaction msg;
+		selectedOffer.setRegion(ClientUtils.currUser.getRegion());		
+		if(selectedOffer==null) {
+			errorLabel.setText("Please choose an offer");
+			errorLabel.setVisible(true);
+			return;
+		}
+		if(selectedOffer.getIsActive().equalsIgnoreCase("ON")) {
+			errorLabel.setText("The offer is active already!");
+			errorLabel.setVisible(true);
+			return;
+		}
+		msg = new Transaction(Action.PROMOTE_OFFER,selectedOffer);
+	    ClientUI.chat.accept(msg);
+		msg = ClientUI.chat.getObj(); 
+		if(msg.getResponse()==Response.OFFER_PROMOTED_UNSUCCESSFULLY) {
+			errorLabel.setText("Failed to promote offer pleast try again");
+			errorLabel.setVisible(true);
+		}
+		else {
+		listView.get(listView.indexOf(selectedOffer)).setIsActive("ON");
+		setColors();
+		table.refresh();
+		}
+	}
+	@FXML
+	void stopOffer(ActionEvent event) throws Exception {
+		errorLabel.setVisible(false);
+		Transaction msg;
+		selectedOffer.setRegion(ClientUtils.currUser.getRegion());
+		
+		if(selectedOffer==null) {
+			errorLabel.setText("Please choose an offer");
+			errorLabel.setVisible(true);
+			return;
+		}
+		if(selectedOffer.getIsActive().equalsIgnoreCase("OFF")) {
+			errorLabel.setText("The offer is not active already!");
+			errorLabel.setVisible(true);
+			return;
+		}
+		msg = new Transaction(Action.STOP_OFFER,selectedOffer);
+	    ClientUI.chat.accept(msg);
+		msg = ClientUI.chat.getObj(); 
+		if(msg.getResponse()==Response.OFFER_PROMOTED_UNSUCCESSFULLY) {
+			errorLabel.setText("Failed to stop offer pleast try again");
+			errorLabel.setVisible(true);
+		}
+		else {
+		listView.get(listView.indexOf(selectedOffer)).setIsActive("OFF");
+		setColors();
+		table.refresh();
+		}
+	}
+	void setColors() {
+		// Get the columns you want to compare
+		TableColumn<Offer, String> statusColumn = StatusColTbl;
+		// Create a cell factory that sets the text color to green if the value in the status column is "ON", and red otherwise
+		statusColumn.setCellFactory(tc -> {
+		    TableCell<Offer, String> cell = new TableCell<>();
+		    cell.textProperty().bind(cell.itemProperty());
+		    cell.itemProperty().addListener((obs, oldText, newText) -> {
+		        if (newText != null) {
+		            if (newText.equals("ON")) {
+		                cell.setTextFill(Color.GREEN);
+		            } else {
+		                cell.setTextFill(Color.RED);
+		            }
+		        }
+		    });
+		    return cell;
+		});
 	}
 }

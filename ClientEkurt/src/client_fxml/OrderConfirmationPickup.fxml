@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="358.0" prefWidth="566.0" style="-fx-background-color: #EEF6FD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.OrderConfirmationPickUpController">
+<AnchorPane prefHeight="358.0" prefWidth="566.0" style="-fx-background-color: #EEF6FD;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client_gui.ConnectToServerController">
    <children>
-      <ImageView fitHeight="109.0" fitWidth="116.0" layoutX="233.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="109.0" fitWidth="116.0" layoutX="231.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../client_images/checkSign.png" />
          </image>
       </ImageView>
-      <Button fx:id="okBtn" layoutX="222.0" layoutY="297.0" mnemonicParsing="false" onAction="#clickOnOkBtn" prefHeight="44.0" prefWidth="123.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Ok" textFill="WHITE">
+      <Button fx:id="loginBtn12" layoutX="222.0" layoutY="297.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="123.0" style="-fx-background-color: #0E5772;" stylesheets="@../client_css/table&amp;buttonDesign.css" text="Ok" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -34,7 +34,7 @@
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="orderCode" alignment="CENTER" layoutX="212.0" layoutY="239.0" prefHeight="35.0" prefWidth="143.0" textAlignment="CENTER" textFill="#0e5772">
+      <Label alignment="CENTER" layoutX="212.0" layoutY="239.0" prefHeight="35.0" prefWidth="143.0" text="X X X X X X" textAlignment="CENTER" textFill="#0e5772">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>

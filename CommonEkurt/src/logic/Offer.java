@@ -2,13 +2,15 @@ package logic;
 
 import java.io.Serializable;
 
+import enums.RegionEnum;
+
 
 @SuppressWarnings("serial")
 public class Offer implements Serializable {
 
 
 	private String productID,productName,productDiscount,productPrice,IsActive;
-
+	private RegionEnum region;
 
 
 	public Offer(String productID, String productName, String productPrice, String productDiscount,String isActive) {
@@ -63,6 +65,11 @@ public class Offer implements Serializable {
 		return "Offer [productID=" + productID + ", productName=" + productName + ", productDiscount=" + productDiscount
 				+ ", productPrice=" + productPrice + "]";
 	}
-	
+	public RegionEnum getRegion() {
+		return region;
+	}
+	public void setRegion(RegionEnum region) {
+		this.region = region;
+	}
 
 }

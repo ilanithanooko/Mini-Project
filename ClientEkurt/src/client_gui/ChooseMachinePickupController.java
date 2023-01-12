@@ -1,7 +1,6 @@
 package client_gui;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,6 @@ import javafx.stage.Stage;
 import logic.Machine;
 import logic.PickUpOrder;
 import logic.Product;
-import logic.ProductInGrid;
 import logic.User;
 
 public class ChooseMachinePickupController {
@@ -63,15 +61,10 @@ public class ChooseMachinePickupController {
 
 	@FXML
 	void clickOnBackButton(MouseEvent event) {
-		ClientUtils.pickupOrderInProcess = null;
 		((Node) event.getSource()).getScene().getWindow().hide();
 		switch (ClientUtils.currUser.getRole()) {
 		case SUBSCRIBER: {
-			new MainDashboradController().start(new Stage());
-			break;
-		}
-		case CUSTOMER: {
-			new MainDashboradController().start(new Stage());
+			new SubscriberDashboradController().start(new Stage());
 			break;
 		}
 		}
@@ -79,25 +72,18 @@ public class ChooseMachinePickupController {
 
 	@FXML
 	void clickOnContinue(ActionEvent event) {
-		ClientUtils.pickupOrderInProcess = new PickUpOrder(ClientUtils.currUser, chooseMachine.getValue(),
+        ClientUtils.pickupOrderInProcess = new PickUpOrder(ClientUtils.currUser, chooseMachine.getValue(),
 				LocalDate.now(), new ArrayList<>(), OrderStatusEnum.IN_PROCESS);
-		Transaction msg1 = new Transaction(Action.GET_AVAILABLE_PRODUCTS_IN_MACHINE,
-				ClientUtils.pickupOrderInProcess.getMachineName());
-		ClientUI.chat.accept(msg1);
-		
-		Transaction msg2 = new Transaction(Action.GET_NOT_AVAILABLE_PRODUCTS_IN_MACHINE,
-				ClientUtils.pickupOrderInProcess.getMachineName());
-		ClientUI.chat.accept(msg2);
-
+		Transaction msg1 = new Transaction(Action.GET_AVAILABLE_PRODUCTS_IN_MACHINE, ClientUtils.pickupOrderInProcess.getMachineName());
+        ClientUI.chat.accept(msg1);
+		Transaction msg2 = new Transaction(Action.GET_NOT_AVAILABLE_PRODUCTS_IN_MACHINE, ClientUtils.pickupOrderInProcess.getMachineName());
+        ClientUI.chat.accept(msg2);
+        
 		((Node) event.getSource()).getScene().getWindow().hide();
-		ClientUtils.cartDisplayFlag = true;
+		
 		switch (ClientUtils.currUser.getRole()) {
 		case SUBSCRIBER: {
 			new SubscriberCategoriesPageController().start(new Stage());
-			break;
-		}
-		case CUSTOMER: {
-			new CustomerCategoriesController().start(new Stage());
 			break;
 		}
 		}

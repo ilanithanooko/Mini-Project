@@ -12,69 +12,74 @@ public class ActionAnalyze {
 		switch (obj.getAction()) {
 		case GET_SUBSCRIBER: {
 			CEOQuaries.GetOrderFromDB(obj, con);
-		break;
+			break;
 		}
 		case UPDATE_SUBSCRIBER:{
 			CEOQuaries.UpdateSubscriberOnDB(obj, con);
-		break;
+			break;
 			}
 	    case LOGIN_USERNAME_PASSWORD:{
 	    	LoginQuaries.loginByUsernameAndPassword(obj);
-	    break;
+	    	break;
 		}
 	    case LOGOUT_USER: {
 	    	LoginQuaries.logoutUsername(obj);
-	    break;
+	    	break;
 	    }
 	    case GET_MACHINES_LIST: {
 	    	OrderQueries.getMachineList(obj);
-	    break;
+	    	break;
 	    }
 	    case GET_AVAILABLE_PRODUCTS_IN_MACHINE: {
 	    		OrderQueries.getProductCodesInMachine(obj);
-	    break;
+	    	break;
 	    }
 	    case GET_NOT_AVAILABLE_PRODUCTS_IN_MACHINE: {
 	    	OrderQueries.getProductCodesInMachineNotInStock(obj);
-	    break;
 	    }
 	    case GET_OFFERS:{
 	    	OffersQuaries.getOffers(obj);
 	    break;
 	    }
 	    case GET_ORDERS:{
-	    //	DeliveryOperatorQuaries.getOrders(obj);
+	    	DeliveryOperatorQuaries.getOrders(obj);
 	    break;
 	    }
-	    case GET_CUR_STOCK: {
-	    	OrderQueries.getProductInMachineStock(obj);
-	    break;
+	    case APPROVE_ORDER:{
+	    	DeliveryOperatorQuaries.ApproveOrder(obj);
+	    	 break;
 	    }
-	    case GET_PAYMENT_DETAILS: {
-	    	OrderQueries.getPaymentDetails(obj);
-	    break;
+	    case COMPLETE_ORDER:{
+	    	DeliveryOperatorQuaries.CompleteOrder(obj);
+	    	 break;
 	    }
-	    case PLACE_PICKUP_ORDER: {
-	    	OrderQueries.placePickupOrder(obj);
-	    break;
-	    }
-	    case PLACE_DELIVERY_ORDER: {
-	    	OrderQueries.placeDeliveryOrder(obj);
-	    break;
-	    }
-	    case PLACE_LOCAL_ORDER: {
-	    	OrderQueries.placeLocalOrder(obj);
+	    case GET_MACHINE:{
+	    	CEOQuaries.getMachine(obj,con);
 	    	break;
 	    }
-	    case GET_PRODUCTS_FOR_DELIVERY: {
-	    	OrderQueries.getProductsFromWarehous(obj);
-	    break;
+	    case GET_MACHINE_BY_REGION:{
+	    	CEOQuaries.getMachineByRegion(obj,con);
+	    	break;
 	    }
-	    case GET_CREDIT_CARD_BY_ID : {
-	    	UserQuaries.getCreditCardById(obj, con);
+	    case GET_INVENTORY_REPORT:{
+	    	CEOQuaries.getInventoryReport(obj,con);
+	    	break;
 	    }
-	    case GET_ID_LIST: {
-	    	UserQuaries.getSubscribersId(obj);
+	    case GET_INVENTORY_STOCK:{
+	    	StorageWorkerQuaries.getRefillStock(obj, con);
+	    	break;
+	    }
+	    case UPDATE_QUANTITY_IN_MACHINE:{
+	    	StorageWorkerQuaries.UpdateQuantityInMachine(obj, con);
+	    	break;
+	    }
+	    case PROMOTE_OFFER:{
+	    	OffersQuaries.PromoteOffer(obj);
+	    	break;
+	    }
+	    case STOP_OFFER:{
+	    	OffersQuaries.StopOffer(obj);
+	    	break;
 	    }
 	}
 	}
